@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
@@ -12,6 +12,22 @@ const Login = () => {
     if (email.trim() === "" || password.trim() === "") {
       setError("*All Fields are Required!");
     }
+
+    let userData = JSON.parse(localStorage.getItem("user"));
+
+    if (!userData) {
+      setError("Please Register First!");
+      alert(error);
+      return;
+    } else if (email === userData.email && password === userData.password) {
+      setError("");
+      alert("Login Success");
+    } else {
+      setError("Invalid Credentials");
+    }
+
+    setEmail("");
+    setPassword("");
   };
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
@@ -43,7 +59,7 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => {
-                setpassword(e.target.value);
+                setPassword(e.target.value);
               }}
               placeholder="Enter password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

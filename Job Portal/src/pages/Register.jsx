@@ -12,6 +12,12 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      username,
+      email,
+      contact,
+      password,
+    };
 
     if (
       username.trim() === "" ||
@@ -20,8 +26,17 @@ const Register = () => {
       password.trim() === ""
     ) {
       setError("*All Fields are Required!");
+    } else {
+      localStorage.setItem("user", JSON.stringify(user));
     }
+
+    setUsername("");
+    setEmail("");
+    setContact("");
+    setpassword("");
+    setError("");
   };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
       <div className="w-full max-w-md rounded-3xl bg-gray-900 p-7 sm:p-9">

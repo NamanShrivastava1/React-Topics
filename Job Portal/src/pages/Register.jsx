@@ -7,7 +7,7 @@ const Register = () => {
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
       <div className="w-full max-w-md rounded-3xl bg-gray-900 p-7 shadow-2xl shadow-blue-950/40 sm:p-9">
         <div className="mb-8">
-          <p className="mb-3 text-sm font-semibold uppercase text-red-400">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-red-400">
             BridgeFix Job Portal
           </p>
           <h1 className="text-3xl font-bold tracking-tight text-white">

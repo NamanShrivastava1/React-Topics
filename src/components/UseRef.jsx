@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 //   const handleIncrement = () => {
 //     val.current = val.current + 1;
-//     console.log(val );
+//     console.log(val);
 //     setCount(count + 1);
 //   };
 

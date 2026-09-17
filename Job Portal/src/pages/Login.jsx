@@ -9,17 +9,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email.trim() === "" || password.trim() === "") {
+    if (email.trim() === "" && password.trim() === "") {
       setError("*All Fields are Required!");
+      return;
     }
 
     let userData = JSON.parse(localStorage.getItem("user"));
 
     if (!userData) {
       setError("Please Register First!");
-      alert(error);
       return;
-    } else if (email === userData.email && password === userData.password) {
+    }
+    if (email === userData.email && password === userData.password) {
       setError("");
       alert("Login Success");
     } else {

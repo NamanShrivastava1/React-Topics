@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
   return (
     <nav className="flex w-full items-center justify-between border-b border-slate-800 bg-slate-950 px-5 py-5 pt-10 pb-10 text-white sm:px-10">
       <Link to="/" className="text-lg font-bold tracking-tight sm:text-xl">
@@ -26,7 +26,14 @@ const Navbar = () => {
             Job Form
           </Link>
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500 font-bold text-white">
-            {!user.username ? <h1>BF</h1> : (user.username?.split("")[0])}
+            {!user.username ? (
+              <img
+                className="rounded-full"
+                src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png"
+              />
+            ) : (
+              user.username?.split("")[0]
+            )}
           </div>
         </div>
       </div>

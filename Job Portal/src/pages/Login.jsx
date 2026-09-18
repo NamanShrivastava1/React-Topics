@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
-import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { email, password,  error, setError } =
-    useContext(AuthContext);
+
+  const { user, error, setError } = useContext(AuthContext);
 
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -14,18 +13,23 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email.trim() === "" && password.trim() === "") {
+    if (
+      enteredEmail.trim() === "" ||
+      enteredPassword.trim() === ""
+    ) {
       setError("*All Fields are Required!");
       return;
     }
 
-    // let userData = JSON.parse(localStorage.getItem("user"));
-
-    if (!email) {
+    if (!user) {
       setError("Please Register First!");
       return;
     }
-    if (enteredEmail === email && enteredPassword === password) {
+
+    if (
+      enteredEmail === user.email &&
+      enteredPassword === user.password
+    ) {
       setError("");
       navigate("/");
       alert("Login Success");
@@ -33,6 +37,7 @@ const Login = () => {
       setError("Invalid Credentials");
     }
   };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
       <div className="w-full max-w-md rounded-3xl bg-gray-900 p-7 sm:p-9">
@@ -40,10 +45,12 @@ const Login = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-red-400">
             Bridgefix Job Portal
           </p>
+
           <h1 className="text-3xl font-bold tracking-tight text-white">
             Welcome back
           </h1>
         </div>
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Email address
@@ -57,6 +64,7 @@ const Login = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Password
             <input
@@ -69,7 +77,9 @@ const Login = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <p className="text-red-500">{error}</p>
+
           <button
             type="submit"
             className="mt-2 h-12 rounded-xl bg-red-500 font-semibold text-white transition hover:bg-red-400"
@@ -77,6 +87,7 @@ const Login = () => {
             Login
           </button>
         </form>
+
         <p className="mt-7 text-center text-sm text-slate-400">
           Don't have an account?{" "}
           <Link

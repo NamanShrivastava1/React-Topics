@@ -1,25 +1,17 @@
-// import React from 'react'
-
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { jobContext } from "../context/JobContext";
 import { useNavigate } from "react-router";
 
 const Register = () => {
   const navigate = useNavigate();
-  const {
-    role,
-    company,
-    contact,
-    location,
-    skills,
-    error,
-    setRole,
-    setCompany,
-    setContact,
-    setLocation,
-    setSkills,
-    setError,
-  } = useContext(jobContext);
+
+  const { setJobs, error, setError } = useContext(jobContext);
+
+  const [role, setRole] = useState("");
+  const [company, setCompany] = useState("");
+  const [contact, setContact] = useState("");
+  const [location, setLocation] = useState("");
+  const [skills, setSkills] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +25,16 @@ const Register = () => {
     ) {
       setError("*All Fields are Required!");
     } else {
+      const jobData = {
+        role,
+        company,
+        contact,
+        location,
+        skills,
+      };
+
+      setJobs((prevJobs) => [...prevJobs, jobData]);
+
       console.log(role, company, contact, location, skills);
       navigate("/");
     }
@@ -45,10 +47,12 @@ const Register = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-red-400">
             BridgeFix Job Portal
           </p>
+
           <h1 className="text-3xl font-bold tracking-tight text-white">
             List Job .
           </h1>
         </div>
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Job Role
@@ -62,6 +66,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Company
             <input
@@ -74,6 +79,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Contact
             <input
@@ -86,6 +92,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Location
             <input
@@ -98,6 +105,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Skills
             <input
@@ -110,7 +118,9 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <p className="text-red-500">{error}</p>
+
           <button
             type="submit"
             className="mt-2 h-12 rounded-xl bg-red-500 font-semibold text-white hover:bg-red-400"

@@ -1,22 +1,16 @@
-// import React from 'react'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
   const navigate = useNavigate();
-  const {
-    username,
-    setUsername,
-    email,
-    setEmail,
-    contact,
-    setContact,
-    password,
-    setPassword,
-    error,
-    setError,
-  } = useContext(AuthContext);
+
+  const { setUser, error, setError } = useContext(AuthContext);
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +23,15 @@ const Register = () => {
     ) {
       setError("*All Fields are Required!");
     } else {
+      const userData = {
+        username,
+        email,
+        contact,
+        password,
+      };
+
+      setUser(userData);
+
       console.log(username, email, contact, password);
       navigate("/login");
     }
@@ -45,6 +48,7 @@ const Register = () => {
             Create your account
           </h1>
         </div>
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Username
@@ -58,6 +62,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Email address
             <input
@@ -70,6 +75,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Contact number
             <input
@@ -82,6 +88,7 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Password
             <input
@@ -94,7 +101,9 @@ const Register = () => {
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+
           <p className="text-red-500">{error}</p>
+
           <button
             type="submit"
             className="mt-2 h-12 rounded-xl bg-red-500 font-semibold text-white hover:bg-red-400"
@@ -102,6 +111,7 @@ const Register = () => {
             Create account
           </button>
         </form>
+
         <p className="mt-7 text-center text-sm text-slate-400">
           Already have an account?{" "}
           <Link

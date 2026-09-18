@@ -1,9 +1,126 @@
 // import React from 'react'
 
-const JobForm = () => {
-  return (
-    <div>JobForm</div>
-  )
-}
+import { useContext } from "react";
+import { jobContext } from "../context/JobContext";
+import { useNavigate } from "react-router";
 
-export default JobForm
+const Register = () => {
+  const navigate = useNavigate();
+  const {
+    role,
+    company,
+    contact,
+    location,
+    skills,
+    error,
+    setRole,
+    setCompany,
+    setContact,
+    setLocation,
+    setSkills,
+    setError,
+  } = useContext(jobContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      role.trim() === "" ||
+      company.trim() === "" ||
+      contact.trim() === "" ||
+      location.trim() === "" ||
+      skills.trim() === ""
+    ) {
+      setError("*All Fields are Required!");
+    } else {
+      console.log(role, company, contact, location, skills);
+      navigate("/");
+    }
+  };
+
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
+      <div className="w-full max-w-md rounded-3xl bg-gray-900 p-7 sm:p-9">
+        <div className="mb-8">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-red-400">
+            BridgeFix Job Portal
+          </p>
+          <h1 className="text-3xl font-bold tracking-tight text-white">
+            List Job .
+          </h1>
+        </div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Job Role
+            <input
+              type="text"
+              value={role}
+              onChange={(e) => {
+                setRole(e.target.value);
+              }}
+              placeholder="Enter Role"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Company
+            <input
+              type="text"
+              value={company}
+              onChange={(e) => {
+                setCompany(e.target.value);
+              }}
+              placeholder="Enter Company Name"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Contact
+            <input
+              type="tel"
+              value={contact}
+              onChange={(e) => {
+                setContact(e.target.value);
+              }}
+              placeholder="Enter contact number"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Location
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+              placeholder="Enter Location"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Skills
+            <input
+              type="text"
+              value={skills}
+              onChange={(e) => {
+                setSkills(e.target.value);
+              }}
+              placeholder="Enter Skills"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          <p className="text-red-500">{error}</p>
+          <button
+            type="submit"
+            className="mt-2 h-12 rounded-xl bg-red-500 font-semibold text-white hover:bg-red-400"
+          >
+            Create Job
+          </button>
+        </form>
+      </div>
+    </main>
+  );
+};
+
+export default Register;

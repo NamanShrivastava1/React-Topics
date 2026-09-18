@@ -1,23 +1,25 @@
 // import React from 'react'
-
-import { useState } from "react";
-import { Link } from "react-router";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
-  const [password, setpassword] = useState("");
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const {
+    username,
+    setUsername,
+    email,
+    setEmail,
+    contact,
+    setContact,
+    password,
+    setPassword,
+    error,
+    setError,
+  } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      username,
-      email,
-      contact,
-      password,
-    };
 
     if (
       username.trim() === "" ||
@@ -27,14 +29,9 @@ const Register = () => {
     ) {
       setError("*All Fields are Required!");
     } else {
-      localStorage.setItem("user", JSON.stringify(user));
+      console.log(username, email, contact, password);
+      navigate("/login");
     }
-
-    setUsername("");
-    setEmail("");
-    setContact("");
-    setpassword("");
-    setError("");
   };
 
   return (
@@ -91,7 +88,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => {
-                setpassword(e.target.value);
+                setPassword(e.target.value);
               }}
               placeholder="Create a password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

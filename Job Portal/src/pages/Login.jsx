@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 import { useState } from "react";
-import { Link } from "react-router";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { email, setEmail, password, setPassword, error, setError } =
+    useContext(AuthContext);
+
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,14 +19,15 @@ const Login = () => {
       return;
     }
 
-    let userData = JSON.parse(localStorage.getItem("user"));
+    // let userData = JSON.parse(localStorage.getItem("user"));
 
-    if (!userData) {
-      setError("Please Register First!");
-      return;
-    }
-    if (email === userData.email && password === userData.password) {
+    // if (!userData) {
+    //   setError("Please Register First!");
+    //   return;
+    // }
+    if (enteredEmail === email && enteredPassword === password) {
       setError("");
+      navigate("/");
       alert("Login Success");
     } else {
       setError("Invalid Credentials");
@@ -46,9 +52,9 @@ const Login = () => {
             Email address
             <input
               type="email"
-              value={email}
+              value={enteredEmail}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEnteredEmail(e.target.value);
               }}
               placeholder="you@example.com"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -58,9 +64,9 @@ const Login = () => {
             Password
             <input
               type="password"
-              value={password}
+              value={enteredPassword}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setEnteredPassword(e.target.value);
               }}
               placeholder="Enter password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

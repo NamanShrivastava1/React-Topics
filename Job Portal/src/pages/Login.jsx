@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { email, setEmail, password, setPassword, error, setError } =
+  const { email, password,  error, setError } =
     useContext(AuthContext);
 
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -21,10 +21,10 @@ const Login = () => {
 
     // let userData = JSON.parse(localStorage.getItem("user"));
 
-    // if (!userData) {
-    //   setError("Please Register First!");
-    //   return;
-    // }
+    if (!email) {
+      setError("Please Register First!");
+      return;
+    }
     if (enteredEmail === email && enteredPassword === password) {
       setError("");
       navigate("/");
@@ -32,9 +32,6 @@ const Login = () => {
     } else {
       setError("Invalid Credentials");
     }
-
-    setEmail("");
-    setPassword("");
   };
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">

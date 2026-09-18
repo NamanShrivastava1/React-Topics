@@ -26,7 +26,7 @@ const Navbar = () => {
             Job Form
           </Link>
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500 font-bold text-white">
-            {user.username.split("")[0]}
+            {!user.username ? <h1>BF</h1> : (user.username?.split("")[0])}
           </div>
         </div>
       </div>

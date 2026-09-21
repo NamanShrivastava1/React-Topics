@@ -9,15 +9,33 @@ const Login = () => {
 
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const [errorField, setErrorField] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      enteredEmail.trim() === "" ||
-      enteredPassword.trim() === ""
-    ) {
-      setError("*All Fields are Required!");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (enteredEmail.trim() === "") {
+      setError("Email is required");
+      setErrorField("email");
+      return;
+    }
+
+    if (!emailRegex.test(enteredEmail)) {
+      setError("Enter a valid email address");
+      setErrorField("email");
+      return;
+    }
+    if (enteredPassword.trim() === "") {
+      setError("Password is required");
+      setErrorField("password");
+      return;
+    }
+
+    if (enteredPassword.length < 6) {
+      setError("Password must be at least 6 characters");
+      setErrorField("password");
       return;
     }
 
@@ -26,10 +44,7 @@ const Login = () => {
       return;
     }
 
-    if (
-      enteredEmail === user.email &&
-      enteredPassword === user.password
-    ) {
+    if (enteredEmail === user.email && enteredPassword === user.password) {
       setError("");
       navigate("/");
       alert("Login Success");
@@ -59,11 +74,17 @@ const Login = () => {
               value={enteredEmail}
               onChange={(e) => {
                 setEnteredEmail(e.target.value);
+
+                if (errorField === "email") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="you@example.com"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "email" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Password
@@ -72,13 +93,17 @@ const Login = () => {
               value={enteredPassword}
               onChange={(e) => {
                 setEnteredPassword(e.target.value);
+
+                if (errorField === "password") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
-
-          <p className="text-red-500">{error}</p>
+          {errorField === "password" && <p className="text-red-500">{error}</p>}
 
           <button
             type="submit"

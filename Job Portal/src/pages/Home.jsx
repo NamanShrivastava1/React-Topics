@@ -34,7 +34,7 @@ const Home = () => {
                 </div>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <p className="font-medium text-slate-500">Salary</p>
+                    <p className="font-medium text-slate-500">Salary (CTC)</p>
                     <p className="mt-1 text-slate-200">{job.calculatedSalary}</p>
                   </div>
                   <div>

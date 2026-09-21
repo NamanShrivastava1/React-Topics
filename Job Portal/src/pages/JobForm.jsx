@@ -26,6 +26,19 @@ const Register = () => {
     return baseSalary + pf + bonus;
   }, [salary]);
 
+  // Without useMemo
+  // const calculatedSalary = () => {
+  //   const baseSalary = Number(salary);
+  //   const pf = (12 / 100) * salary;
+  //   const bonus = (10 / 100) * salary;
+
+  //   console.log("calculating......");
+
+  //   return baseSalary + pf + bonus;
+  // };
+
+  // calculatedSalary()
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

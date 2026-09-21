@@ -18,7 +18,7 @@ const Register = () => {
 
   const calculatedSalary = useMemo(() => {
     const baseSalary = Number(salary);
-    const pf = 2000;
+    const pf = (12 / 100) * salary;
     const bonus = 5000;
 
     console.log("calculating......");

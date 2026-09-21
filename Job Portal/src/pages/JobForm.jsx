@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { jobContext } from "../context/JobContext";
 import { useNavigate } from "react-router";
+import { useMemo } from "react";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -9,10 +10,21 @@ const Register = () => {
 
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
+  const [salary, setSalary] = useState("");
   const [contact, setContact] = useState("");
   const [location, setLocation] = useState("");
   const [skills, setSkills] = useState("");
   const [errorField, setErrorField] = useState("");
+
+  const calculatedSalary = useMemo(() => {
+    const baseSalary = Number(salary);
+    const pf = 2000;
+    const bonus = 5000;
+
+    console.log("calculating......");
+
+    return baseSalary + pf + bonus;
+  }, [salary]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +37,11 @@ const Register = () => {
     if (company.trim() === "") {
       setError("Company is required");
       setErrorField("company");
+      return;
+    }
+    if (salary.trim() === "") {
+      setError("Salary is required");
+      setErrorField("salary");
       return;
     }
     if (contact.trim() === "") {
@@ -45,6 +62,7 @@ const Register = () => {
       const jobData = {
         role,
         company,
+        calculatedSalary,
         contact,
         location,
         skills,
@@ -52,7 +70,7 @@ const Register = () => {
 
       setJobs((prevJobs) => [...prevJobs, jobData]);
 
-      console.log(role, company, contact, location, skills);
+      console.log(role, company, calculatedSalary, contact, location, skills);
       navigate("/");
     }
   };
@@ -104,6 +122,23 @@ const Register = () => {
             />
           </label>
           {errorField === "company" && <p className="text-red-500">{error}</p>}
+
+          <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+            Salary
+            <input
+              type="text"
+              value={salary}
+              onChange={(e) => {
+                setSalary(e.target.value);
+
+                setError("");
+                setErrorField("");
+              }}
+              placeholder="Enter Salary"
+              className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
+            />
+          </label>
+          {errorField === "salary" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Contact

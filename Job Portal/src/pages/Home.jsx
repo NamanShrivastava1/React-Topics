@@ -29,10 +29,14 @@ const Home = () => {
                 className="rounded-2xl bg-gray-900 p-6"
               >
                 <div className="mb-5 border-b border-slate-800 pb-5">
-                  <h2 className="text-xl font-bold text-white">{job.role}</h2>
-                  <p className="mt-1 text-slate-400">{job.company}</p>
+                  <h2 className="text-xl font-bold text-white">{job.company}</h2>
+                  <p className="mt-1 text-slate-400">Role: {job.role}</p>
                 </div>
                 <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-medium text-slate-500">Salary</p>
+                    <p className="mt-1 text-slate-200">{job.calculatedSalary}</p>
+                  </div>
                   <div>
                     <p className="font-medium text-slate-500">Location</p>
                     <p className="mt-1 text-slate-200">{job.location}</p>

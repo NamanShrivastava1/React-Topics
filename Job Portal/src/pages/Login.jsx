@@ -75,10 +75,8 @@ const Login = () => {
               onChange={(e) => {
                 setEnteredEmail(e.target.value);
 
-                if (errorField === "email") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="you@example.com"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -94,10 +92,8 @@ const Login = () => {
               onChange={(e) => {
                 setEnteredPassword(e.target.value);
 
-                if (errorField === "password") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

@@ -94,10 +94,8 @@ const Register = () => {
               onChange={(e) => {
                 setUsername(e.target.value);
 
-                if (errorField === "username") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter username"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -113,10 +111,8 @@ const Register = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
 
-                if (errorField === "email") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="you@example.com"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -132,10 +128,8 @@ const Register = () => {
               onChange={(e) => {
                 setContact(e.target.value);
 
-                if (errorField === "contact") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter contact number"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -150,10 +144,8 @@ const Register = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
 
-                if (errorField === "password") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Create a password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

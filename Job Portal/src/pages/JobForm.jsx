@@ -78,10 +78,9 @@ const Register = () => {
               value={role}
               onChange={(e) => {
                 setRole(e.target.value);
-                if (errorField === "role") {
-                  setError("");
-                  setErrorField("");
-                }
+
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter Role"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -97,10 +96,8 @@ const Register = () => {
               onChange={(e) => {
                 setCompany(e.target.value);
 
-                if (errorField === "company") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter Company Name"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -116,10 +113,8 @@ const Register = () => {
               onChange={(e) => {
                 setContact(e.target.value);
 
-                if (errorField === "contact") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter contact number"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -135,10 +130,8 @@ const Register = () => {
               onChange={(e) => {
                 setLocation(e.target.value);
 
-                if (errorField === "location") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter Location"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
@@ -154,10 +147,8 @@ const Register = () => {
               onChange={(e) => {
                 setSkills(e.target.value);
 
-                if (errorField === "skills") {
-                  setError("");
-                  setErrorField("");
-                }
+                setError("");
+                setErrorField("");
               }}
               placeholder="Enter Skills"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"

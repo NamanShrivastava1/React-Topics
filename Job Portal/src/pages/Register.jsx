@@ -11,30 +11,66 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
+  const [errorField, setErrorField] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      username.trim() === "" ||
-      email.trim() === "" ||
-      contact.trim() === "" ||
-      password.trim() === ""
-    ) {
-      setError("*All Fields are Required!");
-    } else {
-      const userData = {
-        username,
-        email,
-        contact,
-        password,
-      };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      setUser(userData);
-
-      console.log(username, email, contact, password);
-      navigate("/login");
+    if (username.trim() === "") {
+      setError("Username is required");
+      setErrorField("username");
+      return;
     }
+
+    if (email.trim() === "") {
+      setError("Email is required");
+      setErrorField("email");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setError("Enter a valid email address");
+      setErrorField("email");
+      return;
+    }
+
+    if (contact.trim() === "") {
+      setError("Contact is required");
+      setErrorField("contact");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(contact)) {
+      setError("Contact must be 10 digits");
+      setErrorField("contact");
+      return;
+    }
+
+    if (password.trim() === "") {
+      setError("Password is required");
+      setErrorField("password");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      setErrorField("password");
+      return;
+    }
+
+    const userData = {
+      username,
+      email,
+      contact,
+      password,
+    };
+
+    setUser(userData);
+    console.log(userData);
+
+    navigate("/login");
   };
 
   return (
@@ -57,11 +93,17 @@ const Register = () => {
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
+
+                if (errorField === "username") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter username"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "username" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Email address
@@ -70,11 +112,17 @@ const Register = () => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
+
+                if (errorField === "email") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="you@example.com"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "email" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Contact number
@@ -83,12 +131,17 @@ const Register = () => {
               value={contact}
               onChange={(e) => {
                 setContact(e.target.value);
+
+                if (errorField === "contact") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter contact number"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
-
+          {errorField === "contact" && <p className="text-red-500">{error}</p>}
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Password
             <input
@@ -96,13 +149,17 @@ const Register = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
+
+                if (errorField === "password") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Create a password"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
-
-          <p className="text-red-500">{error}</p>
+          {errorField === "password" && <p className="text-red-500">{error}</p>}
 
           <button
             type="submit"

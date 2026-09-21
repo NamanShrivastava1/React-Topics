@@ -12,18 +12,35 @@ const Register = () => {
   const [contact, setContact] = useState("");
   const [location, setLocation] = useState("");
   const [skills, setSkills] = useState("");
+  const [errorField, setErrorField] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      role.trim() === "" ||
-      company.trim() === "" ||
-      contact.trim() === "" ||
-      location.trim() === "" ||
-      skills.trim() === ""
-    ) {
-      setError("*All Fields are Required!");
+    if (role.trim() === "") {
+      setError("Role is required");
+      setErrorField("role");
+      return;
+    }
+    if (company.trim() === "") {
+      setError("Company is required");
+      setErrorField("company");
+      return;
+    }
+    if (contact.trim() === "") {
+      setError("Contact is required");
+      setErrorField("contact");
+      return;
+    }
+    if (location.trim() === "") {
+      setError("Location is required");
+      setErrorField("location");
+      return;
+    }
+    if (skills.trim() === "") {
+      setError("Skills are required");
+      setErrorField("skills");
+      return;
     } else {
       const jobData = {
         role,
@@ -61,11 +78,16 @@ const Register = () => {
               value={role}
               onChange={(e) => {
                 setRole(e.target.value);
+                if (errorField === "role") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter Role"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "role" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Company
@@ -74,11 +96,17 @@ const Register = () => {
               value={company}
               onChange={(e) => {
                 setCompany(e.target.value);
+
+                if (errorField === "company") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter Company Name"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "company" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Contact
@@ -87,11 +115,17 @@ const Register = () => {
               value={contact}
               onChange={(e) => {
                 setContact(e.target.value);
+
+                if (errorField === "contact") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter contact number"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "contact" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Location
@@ -100,11 +134,17 @@ const Register = () => {
               value={location}
               onChange={(e) => {
                 setLocation(e.target.value);
+
+                if (errorField === "location") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter Location"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
+          {errorField === "location" && <p className="text-red-500">{error}</p>}
 
           <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
             Skills
@@ -113,13 +153,17 @@ const Register = () => {
               value={skills}
               onChange={(e) => {
                 setSkills(e.target.value);
+
+                if (errorField === "skills") {
+                  setError("");
+                  setErrorField("");
+                }
               }}
               placeholder="Enter Skills"
               className="h-12 rounded-xl border border-slate-700 bg-slate-800 px-4 text-white outline-none placeholder:text-slate-500"
             />
           </label>
-
-          <p className="text-red-500">{error}</p>
+          {errorField === "skills" && <p className="text-red-500">{error}</p>}
 
           <button
             type="submit"

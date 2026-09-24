@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const MovieCard = ({ movie }) => {
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <div className="group relative overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition hover:shadow-xl">
       <Link to={`/details/${movie.id}`} className="block">
         <img
           className="aspect-[2/3] w-full object-cover"

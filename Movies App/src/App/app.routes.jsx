@@ -1,20 +1,24 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Outlet } from "react-router";
+import Navbar from "../components/Navbar";
 import Home from "../pages/Home";
 import Details from "../pages/Details";
-import Favourites from "../pages/Favourites";
+import Favourites from "../pages/Favourites.jsx";
+
+const Layout = () => (
+  <div className="min-h-screen bg-stone-50 text-stone-900">
+    <Navbar />
+    <Outlet />
+  </div>
+);
 
 export const routes = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/details",
-    element: <Details />,
-  },
-  {
-    path: "/favourite",
-    element: <Favourites />,
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/details/:id", element: <Details /> },
+      { path: "/favorites", element: <Favourites /> },
+    ],
   },
   {
     path: "*",

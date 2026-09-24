@@ -45,9 +45,6 @@ const Home = () => {
   return (
     <main className="mx-auto max-w-6xl px-5 py-8">
       <div className="mb-8">
-        <p className="mb-2 text-sm font-medium text-red-500">
-          Tonight's watchlist
-        </p>
         <h1 className="text-3xl font-bold tracking-tight text-stone-900">
           Find something to watch
         </h1>
@@ -57,14 +54,14 @@ const Home = () => {
           type="text"
           value={search}
           placeholder="Search for movies..."
-          className="min-w-0 flex-1 rounded-md border border-stone-300 bg-white px-4 py-2.5 outline-none placeholder:text-stone-400 focus:border-stone-500"
+          className="min-w-0 flex-1 rounded-md border border-stone-300 bg-white px-4 py-2.5 outline-none placeholder:text-stone-400"
           onChange={(e) => {
             setSearch(e.target.value);
           }}
         />
         <button
           type="submit"
-          className="rounded-md bg-stone-900 px-5 py-2.5 font-medium text-white hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-md bg-stone-900 px-5 py-2.5 font-medium text-white hover:bg-stone-700"
           disabled={loading}
         >
           Search

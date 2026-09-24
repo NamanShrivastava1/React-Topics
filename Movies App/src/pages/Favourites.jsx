@@ -1,3 +1,49 @@
+const Favourites = () => {
+  return (
+    <div>Favourites</div>
+  )
+}
+
+export default Favourites
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import MovieCard from "../components/MovieCard";
 
 // const Favorites = () => {
@@ -21,11 +67,3 @@
 
 // export default Favorites;
 
-
-const Favourites = () => {
-  return (
-    <div>Favourites</div>
-  )
-}
-
-export default Favourites

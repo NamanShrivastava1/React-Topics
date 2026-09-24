@@ -23,6 +23,8 @@ const Home = () => {
     loadPopularMovies();
   }, []);
 
+  // console.log(movies)
+
   const searchHandler = async (e) => {
     e.preventDefault();
 

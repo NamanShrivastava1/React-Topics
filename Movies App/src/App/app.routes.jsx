@@ -5,7 +5,7 @@ import Details from "../pages/Details";
 import Favourites from "../pages/Favourites.jsx";
 
 const Layout = () => (
-  <div className="min-h-screen bg-stone-50 text-stone-900">
+  <div>
     <Navbar />
     <Outlet />
   </div>

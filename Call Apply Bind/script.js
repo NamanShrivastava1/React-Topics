@@ -26,6 +26,9 @@ function sayHello(age, profession) {
 
 // Bind
 const bindFunc = sayHello.bind(obj); 
-console.log(bindFunc(22, "SDE"))
-console.log(bindFunc(23, "DevOps"))
-console.log(bindFunc(24, "SDE-2"))
+// console.log(bindFunc(22, "SDE"))
+// console.log(bindFunc(23, "DevOps"))
+// console.log(bindFunc(24, "SDE-2"))
+
+// this.a = 5;
+console.log(this)

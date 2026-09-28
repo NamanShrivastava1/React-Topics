@@ -2,13 +2,113 @@ import type {
   AnalysisResult,
   ComparisonRow,
   Discrepancy,
+  EvaluateApiResponse,
   Finding,
+  FindingKind,
   MissingItem,
 } from "../../../shared/types";
 
 /**
+ * Normalizes the raw backend evaluate API response into the internal AnalysisResult format
+ */
+export function normalizeEvaluateResponse(
+  raw: EvaluateApiResponse["data"],
+): AnalysisResult {
+  const documentNames: Record<string, string> = {};
+  (raw.documentsAnalyzed ?? []).forEach((doc) => {
+    documentNames[String(doc.id)] = doc.name;
+  });
+
+  const comparisonRows: ComparisonRow[] = (raw.comparisonTable ?? []).map(
+    (row) => {
+      const values: Record<string, string> = { ...row.values };
+      (raw.documentsAnalyzed ?? []).forEach((doc) => {
+        if (row.values[doc.name] !== undefined) {
+          values[String(doc.id)] = row.values[doc.name];
+        }
+      });
+
+      const statusLower = (row.status ?? "").toLowerCase();
+      const hasDiscrepancy =
+        statusLower === "discrepant" || statusLower === "partial";
+
+      return {
+        field: row.field,
+        values,
+        hasDiscrepancy,
+      };
+    },
+  );
+
+  const discrepancies: Discrepancy[] = (raw.discrepancies ?? []).map((d) => ({
+    id: String(d.id),
+    field: d.title || "Discrepancy",
+    details: d.description || "",
+    conflictingValues: (d.evidences ?? []).map((ev) => ({
+      documentId: String(ev.document_id ?? ev.document?.id ?? ""),
+      documentName:
+        ev.document?.original_name ??
+        documentNames[String(ev.document_id)] ??
+        `Document ${ev.document_id}`,
+      value: ev.quote ?? "",
+    })),
+  }));
+
+  const keyValues: Finding[] = (raw.keyValues ?? []).map((kv) => {
+    let kind: FindingKind = "fact";
+    if (kv.classification === "ai_interpretation") {
+      kind = "interpretation";
+    } else if (kv.classification === "extracted_fact") {
+      kind = "fact";
+    }
+
+    const sourceIds = Array.from(
+      new Set(
+        (kv.evidences ?? [])
+          .map((e) => String(e.document_id ?? e.document?.id ?? ""))
+          .filter(Boolean),
+      ),
+    );
+
+    return {
+      id: String(kv.id),
+      kind,
+      label: kv.title,
+      value: kv.description,
+      sourceDocumentIds: sourceIds,
+    };
+  });
+
+  const missingItems: MissingItem[] = (raw.missingInformation ?? []).map(
+    (m, idx) => ({
+      id: String(m.id ?? `missing-${idx + 1}`),
+      field: m.field ?? "Missing Field",
+      documentId: String(m.documentId ?? ""),
+      documentName: m.documentName ?? "Unknown Document",
+      reason: m.reason ?? "Information not found",
+    }),
+  );
+
+  return {
+    id: String(raw.sessionId),
+    prompt: raw.prompt,
+    summary: raw.summary,
+    keyValues,
+    comparisonRows,
+    discrepancies,
+    missingItems,
+    documentNames,
+    createdAt: new Date().toISOString(),
+    model: raw.model,
+    processingTimeMs: raw.processingTimeMs,
+    allFindingsCount: raw.allFindingsCount,
+    markdownOutput: raw.markdownOutput,
+  };
+}
+
+/**
  * Zod-like runtime validation for the analysis response shape.
- * Ensures the backend response matches our expected structure before we trust it.
+ * Ensures the result matches our expected structure before we trust it.
  */
 export function isValidAnalysisResult(data: unknown): data is AnalysisResult {
   if (!data || typeof data !== "object") return false;

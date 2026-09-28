@@ -84,6 +84,132 @@ export interface AnalysisResult {
   documentNames: Record<string, string>;
   /** When the analysis was created */
   createdAt: string;
+  model?: string;
+  processingTimeMs?: number;
+  allFindingsCount?: number;
+  markdownOutput?: string;
+}
+
+/** Response from POST /api/upload */
+export interface UploadApiResponse {
+  success: boolean;
+  message: string;
+  data: {
+    sessionId: number;
+    prompt: string;
+    status: string;
+    uploadedCount: number;
+    processedCount: number;
+    documents: Array<{
+      documentId: number;
+      originalName: string;
+      mimeType: string;
+      sizeBytes: number;
+      status: string;
+      pageCount: number;
+      chunkCount: number;
+      sha256: string;
+    }>;
+  };
+}
+
+/** Document citation evidence */
+export interface EvaluateEvidence {
+  id: number;
+  finding_id: number;
+  document_id: number;
+  chunk_id: number;
+  quote: string;
+  page_number: number | null;
+  createdAt: string;
+  updatedAt: string;
+  document?: {
+    id: number;
+    original_name: string;
+    mime_type: string;
+  };
+}
+
+/** Discrepancy finding in evaluation */
+export interface EvaluateDiscrepancy {
+  id: number;
+  result_id: number;
+  type: string;
+  title: string;
+  description: string;
+  classification: string;
+  severity: string;
+  createdAt: string;
+  updatedAt: string;
+  evidences?: EvaluateEvidence[];
+}
+
+/** Key value item in evaluation */
+export interface EvaluateKeyValue {
+  id: number;
+  result_id: number;
+  type: string;
+  title: string;
+  description: string;
+  classification: string;
+  severity: string;
+  createdAt: string;
+  updatedAt: string;
+  evidences?: EvaluateEvidence[];
+}
+
+/** Comparison table row in evaluation */
+export interface EvaluateComparisonRow {
+  field: string;
+  values: Record<string, string>;
+  status: "discrepant" | "partial" | "consistent" | string;
+}
+
+/** Analyzed document record */
+export interface EvaluateDocumentAnalyzed {
+  id: number;
+  name: string;
+  mimeType: string;
+  pageCount: number;
+}
+
+/** Response from POST /api/evaluate/:sessionId */
+export interface EvaluateApiResponse {
+  success: boolean;
+  message: string;
+  data: {
+    sessionId: number;
+    prompt: string;
+    status: string;
+    model: string;
+    processingTimeMs: number;
+    documentsAnalyzed: EvaluateDocumentAnalyzed[];
+    summary: string;
+    comparisonTable: EvaluateComparisonRow[];
+    discrepancies: EvaluateDiscrepancy[];
+    keyValues: EvaluateKeyValue[];
+    comparisons?: Array<{
+      id: number;
+      result_id: number;
+      type: string;
+      title: string;
+      description: string;
+      classification: string;
+      severity: string;
+      createdAt: string;
+      updatedAt: string;
+      evidences?: EvaluateEvidence[];
+    }>;
+    missingInformation?: Array<{
+      id?: number | string;
+      field?: string;
+      documentId?: string;
+      documentName?: string;
+      reason?: string;
+    }>;
+    allFindingsCount?: number;
+    markdownOutput?: string;
+  };
 }
 
 /** Possible analysis status */

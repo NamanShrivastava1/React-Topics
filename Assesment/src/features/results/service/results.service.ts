@@ -14,3 +14,27 @@ export async function getAnalysisById(id: string): Promise<AnalysisResult> {
   );
   return data;
 }
+
+
+// import { mockAnalysisResult } from "./mockResults";
+
+// const USE_MOCK_API = true;
+
+// export const getAnalysisById = async (
+//   id: string
+// ): Promise<AnalysisResult> => {
+//   if (USE_MOCK_API) {
+//     await new Promise((resolve) => setTimeout(resolve, 1000));
+
+//     return {
+//       ...mockAnalysisResult,
+//       id,
+//     };
+//   }
+
+//   const response = await axios.get<AnalysisResult>(
+//     `${API_BASE}/analyses/${id}`
+//   );
+
+//   return response.data;
+// };

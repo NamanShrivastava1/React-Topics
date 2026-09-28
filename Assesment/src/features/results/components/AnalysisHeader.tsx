@@ -17,7 +17,7 @@ const AnalysisHeader = () => {
         <button
           type="button"
           onClick={() => navigate("/")}
-          className="text-xs text-blue-600 hover:text-blue-700 mb-1 inline-flex items-center gap-1"
+          className="text-xs text-neutral-500 hover:text-neutral-800 mb-1.5 inline-flex items-center gap-1 transition-colors"
         >
           <svg
             className="w-3 h-3"
@@ -34,10 +34,10 @@ const AnalysisHeader = () => {
           </svg>
           Back to Workbench
         </button>
-        <h1 className="text-lg font-semibold text-gray-900">
+        <h1 className="text-[1.125rem] font-semibold text-neutral-900 tracking-tight">
           Analysis Results
         </h1>
-        <p className="text-sm text-gray-500 mt-0.5">
+        <p className="text-[0.8125rem] text-neutral-500 mt-0.5">
           {docCount} document{docCount !== 1 ? "s" : ""} analysed
           {" · "}
           {new Date(result.createdAt).toLocaleString()}
@@ -48,15 +48,15 @@ const AnalysisHeader = () => {
         type="button"
         onClick={copy}
         className="
-          shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border
-          border-gray-300 bg-white text-sm text-gray-700
-          hover:bg-gray-50 transition-colors
+          shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border
+          border-neutral-200 bg-white text-[0.8125rem] text-neutral-600
+          hover:bg-neutral-50 hover:border-neutral-300 transition-all duration-150
         "
       >
         {copied ? (
           <>
             <svg
-              className="w-4 h-4 text-green-600"
+              className="w-4 h-4 text-neutral-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

@@ -19,23 +19,23 @@ const SourceDrawer = () => {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/20 z-40"
+        className="fixed inset-0 bg-black/15 z-40 transition-opacity duration-200"
         onClick={() => dispatch(closeDrawer())}
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-lg z-50 overflow-y-auto">
-        <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 overflow-y-auto border-l border-neutral-200">
+        <div className="p-5 border-b border-neutral-200 flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">
+            <h3 className="text-[0.8125rem] font-semibold text-neutral-900">
               Document Source
             </h3>
-            <p className="text-xs text-gray-500 mt-0.5">{docName}</p>
+            <p className="text-xs text-neutral-500 mt-0.5">{docName}</p>
           </div>
           <button
             type="button"
             onClick={() => dispatch(closeDrawer())}
-            className="text-gray-400 hover:text-gray-600"
+            className="text-neutral-400 hover:text-neutral-600 transition-colors p-1"
           >
             <svg
               className="w-5 h-5"
@@ -53,13 +53,13 @@ const SourceDrawer = () => {
           </button>
         </div>
 
-        <div className="p-4 space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">
+        <div className="p-5 space-y-4">
+          <p className="text-[0.6875rem] text-neutral-500 uppercase tracking-wider font-medium">
             Findings from this document
           </p>
 
           {relatedFindings.length === 0 ? (
-            <p className="text-sm text-gray-400">
+            <p className="text-[0.8125rem] text-neutral-400">
               No extracted findings linked to this document.
             </p>
           ) : (
@@ -67,10 +67,10 @@ const SourceDrawer = () => {
               {relatedFindings.map((f) => (
                 <li
                   key={f.id}
-                  className="border border-gray-100 rounded-md px-3 py-2 text-sm"
+                  className="border border-neutral-100 rounded-lg px-3.5 py-2.5 text-[0.8125rem] bg-neutral-50/50"
                 >
-                  <span className="font-medium text-gray-800">{f.label}:</span>{" "}
-                  <span className="text-gray-600">{f.value}</span>
+                  <span className="font-medium text-neutral-800">{f.label}:</span>{" "}
+                  <span className="text-neutral-600">{f.value}</span>
                 </li>
               ))}
             </ul>
@@ -79,18 +79,18 @@ const SourceDrawer = () => {
           {/* Comparison rows mentioning this document */}
           {result.comparisonRows.length > 0 && (
             <>
-              <p className="text-xs text-gray-500 uppercase tracking-wide font-medium mt-4">
+              <p className="text-[0.6875rem] text-neutral-500 uppercase tracking-wider font-medium mt-5">
                 Comparison values
               </p>
-              <ul className="space-y-1">
+              <ul className="space-y-1.5">
                 {result.comparisonRows
                   .filter((row) => drawerDocumentId in row.values)
                   .map((row) => (
-                    <li key={row.field} className="text-sm text-gray-700">
+                    <li key={row.field} className="text-[0.8125rem] text-neutral-700">
                       <span className="font-medium">{row.field}:</span>{" "}
                       {row.values[drawerDocumentId]}
                       {row.hasDiscrepancy && (
-                        <span className="text-amber-600 text-xs ml-1">
+                        <span className="text-amber-600 text-xs ml-1.5">
                           ⚠ discrepancy
                         </span>
                       )}

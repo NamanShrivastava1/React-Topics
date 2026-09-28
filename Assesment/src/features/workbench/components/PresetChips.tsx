@@ -16,11 +16,11 @@ const PresetChips = () => {
             type="button"
             onClick={() => dispatch(setPrompt(preset))}
             className={`
-              text-xs px-3 py-1.5 rounded-full border transition-colors
+              text-xs px-3 py-1.5 rounded-full border transition-all duration-150
               ${
                 isActive
-                  ? "border-blue-500 bg-blue-50 text-blue-700"
-                  : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+                  ? "border-neutral-800 bg-neutral-800 text-white"
+                  : "border-neutral-200 bg-white text-neutral-600 hover:border-neutral-400 hover:bg-neutral-50"
               }
             `}
           >

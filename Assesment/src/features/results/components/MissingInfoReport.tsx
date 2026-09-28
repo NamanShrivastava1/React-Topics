@@ -6,18 +6,18 @@ const MissingInfoReport = () => {
 
   if (!result || result.missingItems.length === 0) {
     return (
-      <p className="text-sm text-gray-400 py-4">
+      <p className="text-[0.8125rem] text-neutral-400 py-4">
         No missing information detected.
       </p>
     );
   }
 
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-2.5">
       {result.missingItems.map((m) => (
         <li
           key={m.id}
-          className="flex items-start gap-3 border border-red-100 bg-red-50/40 rounded-md px-4 py-3"
+          className="flex items-start gap-3 border border-red-100 bg-red-50/30 rounded-lg px-4 py-3"
         >
           <svg
             className="w-4 h-4 text-red-400 mt-0.5 shrink-0"
@@ -33,9 +33,9 @@ const MissingInfoReport = () => {
             />
           </svg>
           <div className="flex-1">
-            <p className="text-sm font-medium text-gray-800">{m.field}</p>
-            <p className="text-sm text-gray-600 mt-0.5">{m.reason}</p>
-            <div className="mt-1.5">
+            <p className="text-[0.8125rem] font-medium text-neutral-800">{m.field}</p>
+            <p className="text-[0.8125rem] text-neutral-600 mt-0.5 leading-relaxed">{m.reason}</p>
+            <div className="mt-2">
               <SourceChip
                 documentId={m.documentId}
                 documentName={m.documentName}

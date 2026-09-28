@@ -8,17 +8,17 @@ const KIND_STYLES: Record<
   FindingKind,
   { bg: string; text: string; label: string }
 > = {
-  fact: { bg: "bg-green-100", text: "text-green-700", label: "Fact" },
-  comparison: { bg: "bg-blue-100", text: "text-blue-700", label: "Comparison" },
+  fact: { bg: "bg-emerald-50", text: "text-emerald-700", label: "Fact" },
+  comparison: { bg: "bg-neutral-100", text: "text-neutral-600", label: "Comparison" },
   discrepancy: {
-    bg: "bg-amber-100",
+    bg: "bg-amber-50",
     text: "text-amber-700",
     label: "Discrepancy",
   },
-  missing: { bg: "bg-red-100", text: "text-red-700", label: "Missing" },
+  missing: { bg: "bg-red-50", text: "text-red-600", label: "Missing" },
   interpretation: {
-    bg: "bg-purple-100",
-    text: "text-purple-700",
+    bg: "bg-violet-50",
+    text: "text-violet-600",
     label: "AI Interpretation",
   },
 };
@@ -28,7 +28,7 @@ const KindBadge = ({ kind }: KindBadgeProps) => {
 
   return (
     <span
-      className={`inline-block text-xs font-medium px-2 py-0.5 rounded ${style.bg} ${style.text}`}
+      className={`inline-block text-[0.6875rem] font-medium px-2 py-0.5 rounded ${style.bg} ${style.text}`}
     >
       {style.label}
     </span>

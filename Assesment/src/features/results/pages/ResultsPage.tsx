@@ -49,10 +49,10 @@ const ResultsPage = () => {
   // Loading state
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
         <div className="text-center">
           <svg
-            className="animate-spin h-8 w-8 text-blue-600 mx-auto mb-3"
+            className="animate-spin h-6 w-6 text-neutral-400 mx-auto mb-3"
             viewBox="0 0 24 24"
           >
             <circle
@@ -70,7 +70,7 @@ const ResultsPage = () => {
               d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
             />
           </svg>
-          <p className="text-sm text-gray-500">Loading analysis results…</p>
+          <p className="text-[0.8125rem] text-neutral-500">Loading analysis results…</p>
         </div>
       </div>
     );
@@ -79,13 +79,13 @@ const ResultsPage = () => {
   // Error state
   if (status === "error") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
         <div className="text-center max-w-md">
-          <p className="text-sm text-red-600 mb-3">{error}</p>
+          <p className="text-[0.8125rem] text-red-600 mb-4">{error}</p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="text-sm text-blue-600 hover:text-blue-700"
+            className="text-[0.8125rem] text-neutral-600 hover:text-neutral-900 underline underline-offset-2 decoration-neutral-300"
           >
             ← Back to Workbench
           </button>
@@ -96,13 +96,13 @@ const ResultsPage = () => {
 
   if (!result) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-sm text-gray-500">No analysis found.</p>
+          <p className="text-[0.8125rem] text-neutral-500">No analysis found.</p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="text-sm text-blue-600 hover:text-blue-700 mt-2"
+            className="text-[0.8125rem] text-neutral-600 hover:text-neutral-900 underline underline-offset-2 decoration-neutral-300 mt-3 inline-block"
           >
             ← Back to Workbench
           </button>
@@ -112,17 +112,17 @@ const ResultsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+    <div className="min-h-screen bg-[#fafafa]">
+      <header className="bg-white border-b border-neutral-200">
+        <div className="max-w-4xl mx-auto px-6 py-5">
           <AnalysisHeader />
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-6">
+      <main className="max-w-4xl mx-auto px-6 py-6">
         <ResultTabs />
 
-        <div className="py-4">
+        <div className="py-5">
           {activeTab === "summary" && <SummaryCard />}
           {activeTab === "comparison" && <ComparisonTable />}
           {activeTab === "discrepancies" && <DiscrepancyList />}

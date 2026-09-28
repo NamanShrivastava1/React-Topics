@@ -5,7 +5,7 @@ const ComparisonTable = () => {
 
   if (!result || result.comparisonRows.length === 0) {
     return (
-      <p className="text-sm text-gray-400 py-4">
+      <p className="text-[0.8125rem] text-neutral-400 py-4">
         No comparison data available.
       </p>
     );
@@ -14,17 +14,17 @@ const ComparisonTable = () => {
   const docIds = Object.keys(result.documentNames);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm border-collapse">
+    <div className="overflow-x-auto rounded-lg border border-neutral-200">
+      <table className="w-full text-[0.8125rem] border-collapse">
         <thead>
-          <tr className="bg-gray-50">
-            <th className="text-left px-3 py-2 font-medium text-gray-600 border-b border-gray-200">
+          <tr className="bg-neutral-50">
+            <th className="text-left px-4 py-2.5 font-medium text-neutral-600 border-b border-neutral-200">
               Field
             </th>
             {docIds.map((id) => (
               <th
                 key={id}
-                className="text-left px-3 py-2 font-medium text-gray-600 border-b border-gray-200"
+                className="text-left px-4 py-2.5 font-medium text-neutral-600 border-b border-neutral-200"
               >
                 {result.documentNames[id]}
               </th>
@@ -36,15 +36,15 @@ const ComparisonTable = () => {
             <tr
               key={row.field}
               className={`
-                ${idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}
-                ${row.hasDiscrepancy ? "bg-amber-50" : ""}
+                ${idx % 2 === 0 ? "bg-white" : "bg-neutral-50/50"}
+                ${row.hasDiscrepancy ? "bg-amber-50/60" : ""}
               `}
             >
-              <td className="px-3 py-2 font-medium text-gray-800 border-b border-gray-100">
+              <td className="px-4 py-2.5 font-medium text-neutral-800 border-b border-neutral-100">
                 {row.field}
                 {row.hasDiscrepancy && (
                   <span
-                    className="ml-1 text-amber-600 text-xs"
+                    className="ml-1.5 text-amber-600 text-xs"
                     title="Discrepancy detected"
                   >
                     ⚠
@@ -54,7 +54,7 @@ const ComparisonTable = () => {
               {docIds.map((id) => (
                 <td
                   key={id}
-                  className="px-3 py-2 text-gray-600 border-b border-gray-100"
+                  className="px-4 py-2.5 text-neutral-600 border-b border-neutral-100"
                 >
                   {row.values[id] ?? "—"}
                 </td>

@@ -1,1 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #fafafa;
+  color: #1e1e1e;
+}
+
+/* Smooth focus rings */
+*:focus-visible {
+  outline: 2px solid #a3a3a3;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Smooth page transitions */
+#root {
+  min-height: 100vh;
+}

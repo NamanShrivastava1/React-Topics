@@ -10,11 +10,11 @@ const RunAnalysisButton = () => {
         onClick={run}
         disabled={!canRun}
         className={`
-          w-full py-2.5 px-4 rounded-md text-sm font-medium transition-colors
+          w-full py-2.5 px-4 rounded-lg text-[0.8125rem] font-medium transition-all duration-200
           ${
             canRun
-              ? "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800"
-              : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              ? "bg-neutral-900 text-white hover:bg-neutral-800 active:bg-neutral-950 shadow-sm"
+              : "bg-neutral-200 text-neutral-400 cursor-not-allowed"
           }
         `}
       >

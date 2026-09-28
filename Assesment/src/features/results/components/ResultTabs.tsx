@@ -27,7 +27,7 @@ const ResultTabs = () => {
   };
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-neutral-200">
       <nav className="flex gap-0 -mb-px overflow-x-auto">
         {TABS.map((tab) => {
           const isActive = activeTab === tab.key;
@@ -39,11 +39,11 @@ const ResultTabs = () => {
               type="button"
               onClick={() => dispatch(setActiveTab(tab.key))}
               className={`
-                shrink-0 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors
+                shrink-0 px-4 py-2.5 text-[0.8125rem] font-medium border-b-2 transition-colors duration-150
                 ${
                   isActive
-                    ? "border-blue-600 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    ? "border-neutral-900 text-neutral-900"
+                    : "border-transparent text-neutral-500 hover:text-neutral-700 hover:border-neutral-300"
                 }
               `}
             >
@@ -51,8 +51,8 @@ const ResultTabs = () => {
               {count > 0 && (
                 <span
                   className={`
-                    ml-1.5 text-xs px-1.5 py-0.5 rounded-full
-                    ${isActive ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-500"}
+                    ml-1.5 text-[0.6875rem] px-1.5 py-0.5 rounded-full
+                    ${isActive ? "bg-neutral-200 text-neutral-700" : "bg-neutral-100 text-neutral-500"}
                   `}
                 >
                   {count}

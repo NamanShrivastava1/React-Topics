@@ -10,11 +10,9 @@ const DocumentList = () => {
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-gray-700">
-          Uploaded Documents ({documents.length})
-        </h3>
-      </div>
+      <p className="text-xs text-neutral-500 font-medium">
+        {documents.length} file{documents.length !== 1 ? "s" : ""} added
+      </p>
 
       <div className="space-y-1.5">
         {documents.map((doc) => (

@@ -47,12 +47,12 @@ const DropZone = () => {
       onDragLeave={onDragLeave}
       onDrop={onDrop}
       className={`
-        border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
-        transition-colors duration-200
+        border-2 border-dashed rounded-lg px-6 py-10 text-center cursor-pointer
+        transition-all duration-200 ease-in-out
         ${
           isDragging
-            ? "border-blue-500 bg-blue-50"
-            : "border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100"
+            ? "border-neutral-400 bg-neutral-100"
+            : "border-neutral-300 bg-white hover:border-neutral-400 hover:bg-neutral-50"
         }
       `}
       onClick={onBrowse}
@@ -68,7 +68,7 @@ const DropZone = () => {
 
       <div className="flex flex-col items-center gap-2">
         <svg
-          className="w-10 h-10 text-gray-400"
+          className="w-8 h-8 text-neutral-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -80,11 +80,13 @@ const DropZone = () => {
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
           />
         </svg>
-        <p className="text-sm text-gray-600">
-          <span className="font-medium text-blue-600">Click to browse</span> or
-          drag & drop files here
+        <p className="text-[0.8125rem] text-neutral-600">
+          <span className="font-medium text-neutral-800 underline underline-offset-2 decoration-neutral-300">
+            Click to browse
+          </span>{" "}
+          or drag & drop files here
         </p>
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-neutral-400">
           PDF, TXT, CSV, PNG, JPEG, WEBP — up to 10 MB each
         </p>
       </div>

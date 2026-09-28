@@ -14,9 +14,9 @@ const SourceChip = ({ documentId, documentName }: SourceChipProps) => {
       type="button"
       onClick={() => dispatch(openDrawer(documentId))}
       className="
-        inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full
-        bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors
-        cursor-pointer
+        inline-flex items-center gap-1 text-[0.6875rem] px-2 py-0.5 rounded-full
+        bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700
+        transition-colors duration-150 cursor-pointer
       "
       title={`Source: ${documentName}`}
     >

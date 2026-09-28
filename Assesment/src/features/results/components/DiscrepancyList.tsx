@@ -6,7 +6,7 @@ const DiscrepancyList = () => {
 
   if (!result || result.discrepancies.length === 0) {
     return (
-      <p className="text-sm text-gray-400 py-4">No discrepancies found.</p>
+      <p className="text-[0.8125rem] text-neutral-400 py-4">No discrepancies found.</p>
     );
   }
 
@@ -15,22 +15,22 @@ const DiscrepancyList = () => {
       {result.discrepancies.map((d) => (
         <li
           key={d.id}
-          className="border border-amber-200 bg-amber-50/50 rounded-md px-4 py-3"
+          className="border border-amber-200/80 bg-amber-50/40 rounded-lg px-4 py-3"
         >
-          <p className="text-sm font-medium text-gray-800">{d.field}</p>
-          <p className="text-sm text-gray-600 mt-1">{d.details}</p>
+          <p className="text-[0.8125rem] font-medium text-neutral-800">{d.field}</p>
+          <p className="text-[0.8125rem] text-neutral-600 mt-1 leading-relaxed">{d.details}</p>
 
-          <div className="mt-2 space-y-1">
+          <div className="mt-2.5 space-y-1.5">
             {d.conflictingValues.map((cv, cvIdx) => (
               <div
                 key={`${cv.documentId}-${cvIdx}`}
-                className="flex items-center gap-2 text-sm"
+                className="flex items-center gap-2 text-[0.8125rem]"
               >
                 <SourceChip
                   documentId={cv.documentId}
                   documentName={cv.documentName}
                 />
-                <span className="text-gray-700">{cv.value}</span>
+                <span className="text-neutral-600">{cv.value}</span>
               </div>
             ))}
           </div>

@@ -4,12 +4,9 @@ import type {
   UploadApiResponse,
 } from "../../../shared/types";
 import { getAnalysisById } from "../../results/service/results.service";
-import { mockAnalysisResult } from "../../results/service/mockResults";
 
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000/api";
-
-const USE_MOCK_API = import.meta.env.VITE_USE_MOCK === "true";
 
 /**
  * Upload documents + prompt to the backend.
@@ -20,32 +17,6 @@ export async function uploadDocuments(
   files: File[],
   prompt: string,
 ): Promise<UploadApiResponse> {
-  if (USE_MOCK_API) {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return {
-      success: true,
-      message:
-        "Documents uploaded and ingested successfully. Ready for evaluation.",
-      data: {
-        sessionId: 1,
-        prompt,
-        status: "created",
-        uploadedCount: files.length,
-        processedCount: files.length,
-        documents: files.map((f, i) => ({
-          documentId: i + 1,
-          originalName: f.name,
-          mimeType: f.type || "text/plain",
-          sizeBytes: f.size,
-          status: "processed",
-          pageCount: 1,
-          chunkCount: 1,
-          sha256: "mock-sha256",
-        })),
-      },
-    };
-  }
-
   const formData = new FormData();
   formData.append("prompt", prompt);
   files.forEach((file) => formData.append("files", file));
@@ -64,21 +35,13 @@ export async function uploadDocuments(
 
 /**
  * Submit documents + prompt to backend:
- * 1. POST /api/upload
- * 2. POST /api/evaluate/:sessionId
+ * 1. POST http://localhost:4000/api/upload (FormData: prompt, files)
+ * 2. POST http://localhost:4000/api/evaluate/:sessionId (Body: {})
  */
 export async function submitAnalysis(
   files: File[],
   prompt: string,
 ): Promise<AnalysisResult> {
-  if (USE_MOCK_API) {
-    await uploadDocuments(files, prompt);
-    return {
-      ...mockAnalysisResult,
-      prompt,
-    };
-  }
-
   const uploadResponse = await uploadDocuments(files, prompt);
 
   if (!uploadResponse.success || !uploadResponse.data?.sessionId) {

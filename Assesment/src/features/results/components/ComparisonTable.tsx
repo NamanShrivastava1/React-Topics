@@ -5,7 +5,9 @@ const ComparisonTable = () => {
 
   if (!result || result.comparisonRows.length === 0) {
     return (
-      <p className="text-sm text-gray-400 py-4">No comparison data available.</p>
+      <p className="text-sm text-gray-400 py-4">
+        No comparison data available.
+      </p>
     );
   }
 
@@ -41,7 +43,12 @@ const ComparisonTable = () => {
               <td className="px-3 py-2 font-medium text-gray-800 border-b border-gray-100">
                 {row.field}
                 {row.hasDiscrepancy && (
-                  <span className="ml-1 text-amber-600 text-xs" title="Discrepancy detected">⚠</span>
+                  <span
+                    className="ml-1 text-amber-600 text-xs"
+                    title="Discrepancy detected"
+                  >
+                    ⚠
+                  </span>
                 )}
               </td>
               {docIds.map((id) => (

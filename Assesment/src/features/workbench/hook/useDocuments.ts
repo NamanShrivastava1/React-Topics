@@ -54,21 +54,21 @@ export function useDocuments() {
         dispatch(addDocuments(validDocs));
       }
     },
-    [dispatch]
+    [dispatch],
   );
 
   const remove = useCallback(
     (id: string) => {
       dispatch(removeDocument(id));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const updateStatus = useCallback(
     (id: string, status: UploadedDocument["status"], errorMessage?: string) => {
       dispatch(setDocumentStatus({ id, status, errorMessage }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const validDocuments = documents.filter((d) => d.status === "done");

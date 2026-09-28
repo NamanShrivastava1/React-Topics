@@ -7,7 +7,9 @@ const KeyValueGrid = () => {
 
   if (!result || result.keyValues.length === 0) {
     return (
-      <p className="text-sm text-gray-400 py-4">No key-value extractions available.</p>
+      <p className="text-sm text-gray-400 py-4">
+        No key-value extractions available.
+      </p>
     );
   }
 
@@ -21,7 +23,9 @@ const KeyValueGrid = () => {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-sm font-medium text-gray-800">{kv.label}</span>
+                <span className="text-sm font-medium text-gray-800">
+                  {kv.label}
+                </span>
                 <KindBadge kind={kv.kind} />
               </div>
               <p className="text-sm text-gray-600">{kv.value}</p>

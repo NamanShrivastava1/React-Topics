@@ -16,7 +16,8 @@ const WorkbenchPage = () => {
             Document Intelligence Workbench
           </h1>
           <p className="text-sm text-gray-500 mt-0.5">
-            Upload documents, provide an analysis instruction, and receive structured insights.
+            Upload documents, provide an analysis instruction, and receive
+            structured insights.
           </p>
         </div>
       </header>

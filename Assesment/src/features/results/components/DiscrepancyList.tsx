@@ -22,8 +22,14 @@ const DiscrepancyList = () => {
 
           <div className="mt-2 space-y-1">
             {d.conflictingValues.map((cv) => (
-              <div key={cv.documentId} className="flex items-center gap-2 text-sm">
-                <SourceChip documentId={cv.documentId} documentName={cv.documentName} />
+              <div
+                key={cv.documentId}
+                className="flex items-center gap-2 text-sm"
+              >
+                <SourceChip
+                  documentId={cv.documentId}
+                  documentName={cv.documentName}
+                />
                 <span className="text-gray-700">{cv.value}</span>
               </div>
             ))}

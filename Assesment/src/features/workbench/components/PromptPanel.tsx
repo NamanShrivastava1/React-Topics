@@ -8,7 +8,10 @@ const PromptPanel = () => {
 
   return (
     <div className="space-y-3">
-      <label htmlFor="analysis-prompt" className="block text-sm font-medium text-gray-700">
+      <label
+        htmlFor="analysis-prompt"
+        className="block text-sm font-medium text-gray-700"
+      >
         Analysis Instruction
       </label>
 

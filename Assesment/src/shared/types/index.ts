@@ -59,7 +59,11 @@ export interface Discrepancy {
   field: string;
   details: string;
   /** Values from different documents */
-  conflictingValues: { documentId: string; documentName: string; value: string }[];
+  conflictingValues: {
+    documentId: string;
+    documentName: string;
+    value: string;
+  }[];
 }
 
 /** The structured result coming back from the backend */
@@ -86,7 +90,12 @@ export interface AnalysisResult {
 export type AnalysisStatus = "idle" | "loading" | "success" | "error";
 
 /** Tabs on the results page */
-export type ResultTab = "summary" | "comparison" | "discrepancies" | "missing" | "keyValues";
+export type ResultTab =
+  | "summary"
+  | "comparison"
+  | "discrepancies"
+  | "missing"
+  | "keyValues";
 
 /** Accepted MIME types mapped to formats */
 export const ACCEPTED_FORMATS: Record<string, DocumentFormat> = {

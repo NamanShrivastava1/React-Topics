@@ -27,7 +27,7 @@ const workbenchSlice = createSlice({
         id: string;
         status: UploadedDocument["status"];
         errorMessage?: string;
-      }>
+      }>,
     ) {
       const doc = state.documents.find((d) => d.id === action.payload.id);
       if (doc) {

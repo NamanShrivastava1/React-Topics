@@ -24,7 +24,7 @@ const DropZone = () => {
         handleFiles(e.dataTransfer.files);
       }
     },
-    [handleFiles]
+    [handleFiles],
   );
 
   const onBrowse = useCallback(() => {
@@ -38,7 +38,7 @@ const DropZone = () => {
         e.target.value = "";
       }
     },
-    [handleFiles]
+    [handleFiles],
   );
 
   return (
@@ -49,9 +49,10 @@ const DropZone = () => {
       className={`
         border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
         transition-colors duration-200
-        ${isDragging
-          ? "border-blue-500 bg-blue-50"
-          : "border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100"
+        ${
+          isDragging
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100"
         }
       `}
       onClick={onBrowse}
@@ -80,8 +81,8 @@ const DropZone = () => {
           />
         </svg>
         <p className="text-sm text-gray-600">
-          <span className="font-medium text-blue-600">Click to browse</span>{" "}
-          or drag & drop files here
+          <span className="font-medium text-blue-600">Click to browse</span> or
+          drag & drop files here
         </p>
         <p className="text-xs text-gray-400">
           PDF, TXT, CSV, PNG, JPEG, WEBP — up to 10 MB each

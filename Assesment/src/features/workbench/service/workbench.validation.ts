@@ -1,4 +1,8 @@
-import { ACCEPTED_FORMATS, MAX_FILE_SIZE_BYTES, type DocumentFormat } from "../../../shared/types";
+import {
+  ACCEPTED_FORMATS,
+  MAX_FILE_SIZE_BYTES,
+  type DocumentFormat,
+} from "../../../shared/types";
 
 export interface ValidationResult {
   valid: boolean;
@@ -49,7 +53,10 @@ export function validatePrompt(prompt: string): ValidationResult {
   }
 
   if (trimmed.length < 10) {
-    return { valid: false, error: "Prompt is too short. Provide a clearer instruction." };
+    return {
+      valid: false,
+      error: "Prompt is too short. Provide a clearer instruction.",
+    };
   }
 
   if (trimmed.length > 2000) {

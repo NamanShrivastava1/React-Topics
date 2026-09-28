@@ -1,4 +1,10 @@
-import type { AnalysisResult, ComparisonRow, Discrepancy, Finding, MissingItem } from "../../../shared/types";
+import type {
+  AnalysisResult,
+  ComparisonRow,
+  Discrepancy,
+  Finding,
+  MissingItem,
+} from "../../../shared/types";
 
 /**
  * Zod-like runtime validation for the analysis response shape.

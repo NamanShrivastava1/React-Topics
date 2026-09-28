@@ -27,10 +27,7 @@ const DocumentCard = ({ doc, onRemove }: DocumentCardProps) => {
     <div
       className={`
         flex items-center justify-between gap-3 px-3 py-2 rounded-md border text-sm
-        ${isError
-          ? "border-red-300 bg-red-50"
-          : "border-gray-200 bg-white"
-        }
+        ${isError ? "border-red-300 bg-red-50" : "border-gray-200 bg-white"}
       `}
     >
       <div className="flex items-center gap-2 min-w-0">
@@ -54,7 +51,10 @@ const DocumentCard = ({ doc, onRemove }: DocumentCardProps) => {
 
       <div className="flex items-center gap-2 shrink-0">
         {isError && (
-          <span className="text-xs text-red-600 max-w-50 truncate" title={doc.errorMessage}>
+          <span
+            className="text-xs text-red-600 max-w-50 truncate"
+            title={doc.errorMessage}
+          >
             {doc.errorMessage}
           </span>
         )}
@@ -65,8 +65,18 @@ const DocumentCard = ({ doc, onRemove }: DocumentCardProps) => {
           className="text-gray-400 hover:text-red-500 transition-colors"
           title="Remove document"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>

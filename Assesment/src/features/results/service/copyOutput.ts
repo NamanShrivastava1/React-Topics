@@ -6,7 +6,7 @@ import type { AnalysisResult, ResultTab } from "../../../shared/types";
  */
 export function formatResultForCopy(
   result: AnalysisResult,
-  tab: ResultTab
+  tab: ResultTab,
 ): string {
   const lines: string[] = [];
   const divider = "─".repeat(50);
@@ -26,7 +26,10 @@ export function formatResultForCopy(
       lines.push("COMPARISON TABLE");
       lines.push(divider);
       const docIds = Object.keys(result.documentNames);
-      const header = ["Field", ...docIds.map((id) => result.documentNames[id])].join(" | ");
+      const header = [
+        "Field",
+        ...docIds.map((id) => result.documentNames[id]),
+      ].join(" | ");
       lines.push(header);
       lines.push("─".repeat(header.length));
       for (const row of result.comparisonRows) {

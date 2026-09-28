@@ -1,7 +1,11 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../shared/hooks";
-import { setLoading, setResult, setError } from "../../results/state/results.slice";
+import {
+  setLoading,
+  setResult,
+  setError,
+} from "../../results/state/results.slice";
 import { submitAnalysis } from "../service/workbench.service";
 import { validatePrompt } from "../service/workbench.validation";
 import { isValidAnalysisResult } from "../../results/service/results.schemas";
@@ -25,7 +29,9 @@ export function useRunAnalysis() {
     // Validate documents
     const validDocs = documents.filter((d) => d.status === "done");
     if (validDocs.length === 0) {
-      setValidationError("Upload at least one valid document before analysing.");
+      setValidationError(
+        "Upload at least one valid document before analysing.",
+      );
       return;
     }
 
@@ -43,7 +49,9 @@ export function useRunAnalysis() {
       const result = await submitAnalysis(files, prompt);
 
       if (!isValidAnalysisResult(result)) {
-        dispatch(setError("Received an unexpected response format from the server."));
+        dispatch(
+          setError("Received an unexpected response format from the server."),
+        );
         return;
       }
 
@@ -51,7 +59,9 @@ export function useRunAnalysis() {
       navigate(`/analyses/${result.id}`);
     } catch (err: unknown) {
       const message =
-        err instanceof Error ? err.message : "Analysis failed. Please try again.";
+        err instanceof Error
+          ? err.message
+          : "Analysis failed. Please try again.";
       dispatch(setError(message));
     }
   }, [documents, prompt, dispatch, navigate]);

@@ -12,7 +12,7 @@ const SourceDrawer = () => {
 
   // Gather all findings from this document
   const relatedFindings = result.keyValues.filter((kv) =>
-    kv.sourceDocumentIds.includes(drawerDocumentId)
+    kv.sourceDocumentIds.includes(drawerDocumentId),
   );
 
   return (
@@ -27,7 +27,9 @@ const SourceDrawer = () => {
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-lg z-50 overflow-y-auto">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Document Source</h3>
+            <h3 className="text-sm font-semibold text-gray-900">
+              Document Source
+            </h3>
             <p className="text-xs text-gray-500 mt-0.5">{docName}</p>
           </div>
           <button
@@ -35,8 +37,18 @@ const SourceDrawer = () => {
             onClick={() => dispatch(closeDrawer())}
             className="text-gray-400 hover:text-gray-600"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -47,7 +59,9 @@ const SourceDrawer = () => {
           </p>
 
           {relatedFindings.length === 0 ? (
-            <p className="text-sm text-gray-400">No extracted findings linked to this document.</p>
+            <p className="text-sm text-gray-400">
+              No extracted findings linked to this document.
+            </p>
           ) : (
             <ul className="space-y-2">
               {relatedFindings.map((f) => (
@@ -76,7 +90,9 @@ const SourceDrawer = () => {
                       <span className="font-medium">{row.field}:</span>{" "}
                       {row.values[drawerDocumentId]}
                       {row.hasDiscrepancy && (
-                        <span className="text-amber-600 text-xs ml-1">⚠ discrepancy</span>
+                        <span className="text-amber-600 text-xs ml-1">
+                          ⚠ discrepancy
+                        </span>
                       )}
                     </li>
                   ))}

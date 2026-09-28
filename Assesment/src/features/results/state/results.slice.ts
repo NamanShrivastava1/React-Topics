@@ -1,5 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { AnalysisResult, AnalysisStatus, ResultTab } from "../../../shared/types";
+import type {
+  AnalysisResult,
+  AnalysisStatus,
+  ResultTab,
+} from "../../../shared/types";
 
 interface ResultsState {
   result: AnalysisResult | null;

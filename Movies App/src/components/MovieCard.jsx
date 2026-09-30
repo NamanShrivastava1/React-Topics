@@ -5,7 +5,7 @@ const MovieCard = ({ movie }) => {
     <div className="group relative overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition hover:shadow-xl">
       <Link to={`/details/${movie.id}`} className="block">
         <img
-          className="aspect-[2/3] w-full object-cover"
+          className="aspect-2/3 w-full object-cover"
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />

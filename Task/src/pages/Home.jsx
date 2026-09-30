@@ -31,7 +31,7 @@ const products = [
 
 const Home = () => {
   return (
-    <main className="h-screen w-full bg-white flex gap-8 px-16 py-10">
+    <main className="min-h-[calc(100vh-6rem)] w-full bg-white flex gap-8 px-16 py-10">
       <div className="h-[78%] w-[30%] bg-white border border-gray-300 shadow-lg rounded-md px-8 py-4">
         <div className="flex justify-between mb-6">
           <h1>Filters</h1>
@@ -76,7 +76,7 @@ const Home = () => {
       </div>
       <div className="w-full h-[93%] px-8 py-4 rounded-md">
         <div className="flex items-center justify-between mb-2">
-          <h1>Smartphones</h1>
+          <h1 className="font-bold text-2xl">Smartphones</h1>
           <div className="flex items-center gap-2">
             <p>Sort By</p>
             <p>Price: </p>

@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PaymentPage from "../pages/PaymentPage";
 import OrderCompleted from "../pages/OrderCompleted";
+import { PaymentLayout } from "./PaymentLayout";
 
 export const routes = createBrowserRouter([
   {
@@ -30,17 +31,23 @@ export const routes = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/productDetail",
+        path: "/productDetail/:id",
         element: <ProductDetail />,
       },
     ],
   },
   {
-    path: "/paymentPage",
-    element: <PaymentPage />,
-  },
-  {
-    path: "/orderCompleted",
-    element: <OrderCompleted />,
+    path: "/",
+    element: <PaymentLayout />,
+    children: [
+      {
+        path: "/paymentPage",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/orderCompleted",
+        element: <OrderCompleted />,
+      },
+    ],
   },
 ]);

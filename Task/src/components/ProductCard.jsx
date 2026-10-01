@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
         onClick={() => {
           navigate(`/productDetail/${product.id}`);
         }}
-        className="h-1/2 bg-amber-100 px-4 pt-3"
+        className="h-1/2 bg-stone-100 px-4 pt-3"
       >
         <div className="flex items-center justify-between">
           <h1 className="bg-red-600 text-white px-1 py-1 rounded-md">-8%</h1>

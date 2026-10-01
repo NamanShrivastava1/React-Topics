@@ -1,33 +1,8 @@
 // import React from 'react'
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 import Products from "../components/Products";
-
-const products = [
-  {
-    id: 1,
-    brand: "Apple",
-    name: "iPhone 13 Pro",
-    rating: 4.4,
-    price: "90,000",
-    originalPrice: "99,000",
-  },
-  {
-    id: 2,
-    brand: "Samsung",
-    name: "Galaxy S24",
-    rating: 4.6,
-    price: "75,000",
-    originalPrice: "82,000",
-  },
-  {
-    id: 3,
-    brand: "OnePlus",
-    name: "OnePlus 13",
-    rating: 4.5,
-    price: "65,000",
-    originalPrice: "70,000",
-  },
-];
+import products from "../data/products";
 
 const Home = () => {
   return (
@@ -99,6 +74,32 @@ const Home = () => {
           {products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
+        </div>
+
+        <div className="w-82 flex items-center gap-2 mt-8 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
+          <button className="p-2 rounded-md hover:bg-gray-100 text-gray-600 transition-colors">
+            <ChevronLeft size={20} />
+          </button>
+
+          <button className="w-10 h-10 rounded-md bg-[#4338ca] text-white font-medium">
+            1
+          </button>
+          <button className="w-10 h-10 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors">
+            2
+          </button>
+          <button className="w-10 h-10 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors">
+            3
+          </button>
+
+          <span className="text-gray-400 px-1">...</span>
+
+          <button className="w-10 h-10 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors">
+            10
+          </button>
+
+          <button className="p-2rounded-md hover:bg-gray-100 text-gray-600 transition-colors">
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </main>

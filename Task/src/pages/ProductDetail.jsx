@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import ReviewCard from "../components/ReviewCard";
 import SimilarProductCard from "../components/SimilarProducts";
 
@@ -116,9 +117,12 @@ const ProductDetail = () => {
           </div>
 
           <div className="flex gap-3 mt-5">
-            <button className="h-11 flex-1 bg-blue-600 text-white rounded-md">
+            <Link
+              to="/cart"
+              className="h-11 pl-26 pt-2 flex-1 bg-blue-600 text-white rounded-md"
+            >
               Add to Cart
-            </button>
+            </Link>
 
             <button className="h-11 w-32.5 border border-blue-600 text-blue-600 rounded-md">
               Add Wishlist

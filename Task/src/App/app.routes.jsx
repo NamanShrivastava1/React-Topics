@@ -41,7 +41,7 @@ export const routes = createBrowserRouter([
     element: <PaymentLayout />,
     children: [
       {
-        path: "/paymentPage",
+        path: "/payment",
         element: <PaymentPage />,
       },
       {

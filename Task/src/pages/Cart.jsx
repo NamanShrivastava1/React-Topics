@@ -185,12 +185,13 @@ const Cart = () => {
                 </span>
               </div>
 
-              <button
-                className="w-full rounded-lg py-3 text-sm font-semibold text-white"
+              <Link
+                to="/payment"
+                className="w-full rounded-lg py-3 px-3 text-sm font-semibold text-white"
                 style={{ backgroundColor: "#4338ca" }}
               >
                 Proceed to checkout
-              </button>
+              </Link>
             </div>
           </div>
         )}

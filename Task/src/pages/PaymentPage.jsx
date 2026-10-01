@@ -101,7 +101,7 @@ const PaymentPage = () => {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Emily Johnson"
+                      defaultValue="Naman Shrivastava"
                       className="w-full h-9 border border-gray-200 rounded-md px-3 text-[11px] outline-none"
                     />
                   </div>
@@ -133,7 +133,7 @@ const PaymentPage = () => {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Bengaluru"
+                      defaultValue="Bhopal"
                       className="w-full h-9 border border-gray-200 rounded-md px-3 text-[11px] outline-none"
                     />
                   </div>
@@ -143,7 +143,7 @@ const PaymentPage = () => {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Karnataka"
+                      defaultValue="MP"
                       className="w-full h-9 border border-gray-200 rounded-md px-3 text-[11px] outline-none"
                     />
                   </div>
@@ -355,7 +355,7 @@ const PaymentPage = () => {
                       42 MG Road, Near Brigade Road
                     </p>
                     <p className="text-[11px] text-gray-500">
-                      Bengaluru, Karnataka 560001
+                      Bhopal, MP 560001
                     </p>
                     <p className="text-[11px] text-gray-500">India</p>
                     <p className="text-[11px] text-gray-500 mt-1">
@@ -386,7 +386,7 @@ const PaymentPage = () => {
                           •••• •••• •••• 1111
                         </p>
                         <p className="text-[11px] text-gray-500">
-                          Emily Johnson · Expires 13/27
+                          Naman Shrivastava · Expires 13/27
                         </p>
                       </div>
                     )}
@@ -490,8 +490,7 @@ const PaymentPage = () => {
             <div className="bg-[#f8fafc] rounded-md p-3 mt-3">
               <p className="text-[9px] text-gray-600 leading-4">
                 <span className="font-semibold text-gray-800">Deliver to:</span>{" "}
-                Emily Johnson, 42 MG Road, Bengaluru, Karnataka 560001 ·
-                9876543210
+                Naman Shrivastava, 42 MG Road, Bhopal, MP 560001 · 9876543210
               </p>
             </div>
           </div>

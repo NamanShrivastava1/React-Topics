@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const PaymentPage = () => {
   const [step, setStep] = useState(1);
@@ -426,9 +427,12 @@ const PaymentPage = () => {
                   >
                     ← Back to payment
                   </button>
-                  <button className="h-9 px-5 rounded-md bg-[#4f46e5] text-white text-[11px] font-medium">
+                  <Link
+                    to="/orderCompleted"
+                    className="h-9 pt-2.5 px-5 rounded-md bg-[#4f46e5] text-white text-[11px] font-medium"
+                  >
                     Place order →
-                  </button>
+                  </Link>
                 </div>
               </div>
             )}

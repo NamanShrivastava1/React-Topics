@@ -1,6 +1,8 @@
 // import React from 'react'
 
-import ReactMemo from "./components/ReactMemo";
+import SyntheticEvents from "./components/SyntheticEvents";
+
+// import ReactMemo from "./components/ReactMemo";
 
 // import { useMemo } from "react";
 // import { useState } from "react";
@@ -13,7 +15,8 @@ const App = () => {
     <div>
       {/* <Todo /> */}
       {/* <UseRef /> */}
-      <ReactMemo />
+      {/* <ReactMemo /> */}
+      <SyntheticEvents />
     </div>
   );
 };

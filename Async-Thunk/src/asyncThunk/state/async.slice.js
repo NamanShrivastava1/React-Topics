@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchUser = createAsyncThunk("async/fetchUser", async () => {
-  const response = await fetch("/api/user");
+export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
   if (!response.ok) {
     throw new Error("Failed to fetch user");
   }
@@ -14,7 +14,7 @@ const initialState = {
   error: null,
 };
 const asyncSlice = createSlice({
-  name: "async",
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

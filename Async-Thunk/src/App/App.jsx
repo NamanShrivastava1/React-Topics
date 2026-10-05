@@ -1,8 +1,11 @@
 // import React from 'react'
+import User from "../asyncThunk/pages/User.jsx"
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <User />
+    </div>
   )
 }
 

@@ -1,21 +1,21 @@
 import { useMemo, useState } from "react";
 
 const UseMemo = () => {
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-  const result = useMemo(() => {
-    console.log("Calculation running");
-    return 10 * 20;
-  }, []);
+    const result = useMemo(() => {
+      console.log("Calculation running");
+      return 10 * 20;
+    }, []);
 
-  console.log("Component rendered");
-  console.log(result);
+    console.log("Component rendered");
+    console.log(result);
 
-  return <button onClick={() => setCount(count + 1)}>{count}</button>;
-};
+    return <button onClick={() => setCount(count + 1)}>{count}</button>;
+  };
 
-// Without UseMemo
-// const [count, setCount] = useState(0);
+  // Without UseMemo
+//   const [count, setCount] = useState(0);
 
 //   const result = (() => {
 //     console.log("Calculation running");
@@ -23,11 +23,9 @@ const UseMemo = () => {
 //   })();
 
 //   console.log("Component rendered");
+//   console.log(result)
 
-//   return (
-//     <button onClick={() => setCount(count + 1)}>
-//       {count}
-//     </button>
-//   );
+//   return <button onClick={() => setCount(count + 1)}>{count}</button>;
+// };
 
 export default UseMemo;

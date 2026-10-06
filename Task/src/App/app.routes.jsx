@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../pages/Home";
-import { AppLayout } from "./AppLayout";
 import Cart from "../pages/Cart";
 import ProductDetail from "../pages/ProductDetail";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PaymentPage from "../pages/PaymentPage";
 import OrderCompleted from "../pages/OrderCompleted";
+import { AppLayout } from "./AppLayout";
 import { PaymentLayout } from "./PaymentLayout";
 
 export const routes = createBrowserRouter([

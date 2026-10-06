@@ -1,14 +1,12 @@
 // import React from 'react'
 
-import SyntheticEvents from "./components/SyntheticEvents";
-
-// import ReactMemo from "./components/ReactMemo";
-
-// import { useMemo } from "react";
 // import { useState } from "react";
 // import { useEffect } from "react";
 // import Todo from "./components/Todo.jsx";
 // import UseRef from "./components/UseRef.jsx";
+// import ReactMemo from "./components/ReactMemo";
+import UseMemo from "./components/UseMemo";
+// import SyntheticEvents from "./components/SyntheticEvents";
 
 const App = () => {
   return (
@@ -16,7 +14,8 @@ const App = () => {
       {/* <Todo /> */}
       {/* <UseRef /> */}
       {/* <ReactMemo /> */}
-      <SyntheticEvents />
+      {/* <SyntheticEvents /> */}
+      <UseMemo />
     </div>
   );
 };

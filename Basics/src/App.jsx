@@ -7,7 +7,8 @@
 // import ReactMemo from "./components/ReactMemo";
 // import UseMemo from "./components/UseMemo";
 // import SyntheticEvents from "./components/SyntheticEvents";
-import UseCallback from "./components/UseCallback";
+// import UseCallback from "./components/UseCallback";
+import LazyLoding from "./components/LazyLoding";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
       {/* <ReactMemo /> */}
       {/* <SyntheticEvents /> */}
       {/* <UseMemo /> */}
-      <UseCallback />
+      {/* <UseCallback /> */}
+      <LazyLoding />
     </div>
   );
 };

@@ -5,8 +5,9 @@
 // import Todo from "./components/Todo.jsx";
 // import UseRef from "./components/UseRef.jsx";
 // import ReactMemo from "./components/ReactMemo";
-import UseMemo from "./components/UseMemo";
+// import UseMemo from "./components/UseMemo";
 // import SyntheticEvents from "./components/SyntheticEvents";
+import UseCallback from "./components/UseCallback";
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
       {/* <UseRef /> */}
       {/* <ReactMemo /> */}
       {/* <SyntheticEvents /> */}
-      <UseMemo />
+      {/* <UseMemo /> */}
+      <UseCallback />
     </div>
   );
 };

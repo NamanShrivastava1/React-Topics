@@ -1,35 +1,37 @@
 let obj = {
-    name: "Naman",
+  name: "Naman",
 };
 
 function sayHello(age) {
     console.log(`Hello ${this.name} is ${age}`);
 }
 
+// const sayHello = (age) => {
+//   console.log(`Hello ${this.name} is ${age}`);
+// };
+
 // Call
-// sayHello.call(obj, 22);
+sayHello.call(obj, 22);
 // If we pass multiple arguments we have to send using separated commas
 
-
-function sayHello(age, profession) {
-    console.log(`Hello ${this.name} is ${age} and is an ${profession}`);
-}
+// function sayHello(age, profession) {
+//   console.log(`Hello ${this.name} is ${age} and is an ${profession}`);
+// }
 
 // Apply
 // sayHello.apply(obj, [22, "SDE"]);
 // It is same as Call but the arguments need to pass in an array
 
-
-function sayHello(age, profession) {
-    console.log(`Hello ${this.name} is ${age} and is an ${profession}`);
-}
+// function sayHello(age, profession) {
+//   console.log(`Hello ${this.name} is ${age} and is an ${profession}`);
+// }
 
 // Bind
-const bindFunc = sayHello.bind(obj); 
+const bindFunc = sayHello.bind(obj);
 // console.log(bindFunc)
 // console.log(bindFunc(22, "SDE"))
 // console.log(bindFunc(23, "DevOps"))
 // console.log(bindFunc(24, "SDE-2"))
 
 // this.a = 5;
-console.log(this)
+// console.log(this)

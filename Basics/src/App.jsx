@@ -9,7 +9,9 @@
 // import SyntheticEvents from "./components/SyntheticEvents";
 // import UseCallback from "./components/UseCallback";
 // import LazyLoding from "./components/LazyLoding";
-import Virtulization from "./components/Virtulization";
+// import Virtulization from "./components/Virtulization";
+import BuggyComponent from "./components/BuggyComponent";
+import Error from "./ErrorBoundary/Error";
 
 const App = () => {
   return (
@@ -21,7 +23,10 @@ const App = () => {
       {/* <UseMemo /> */}
       {/* <UseCallback /> */}
       {/* <LazyLoding /> */}
-      <Virtulization />
+      {/* <Virtulization /> */}
+      <Error>
+        <BuggyComponent />
+      </Error>
     </div>
   );
 };

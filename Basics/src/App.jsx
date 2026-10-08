@@ -10,8 +10,10 @@
 // import UseCallback from "./components/UseCallback";
 // import LazyLoding from "./components/LazyLoding";
 // import Virtulization from "./components/Virtulization";
-import BuggyComponent from "./components/BuggyComponent";
-import Error from "./ErrorBoundary/Error";
+// import BuggyComponent from "./components/BuggyComponent";
+// import Error from "./ErrorBoundary/Error";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Pagination } from "./components/Pagination";
 
 const App = () => {
   return (
@@ -24,9 +26,14 @@ const App = () => {
       {/* <UseCallback /> */}
       {/* <LazyLoding /> */}
       {/* <Virtulization /> */}
-      <Error>
+      {/* <Error>
         <BuggyComponent />
-      </Error>
+      </Error> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/page" element={<Pagination />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

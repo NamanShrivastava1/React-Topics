@@ -14,7 +14,10 @@
 // import Error from "./ErrorBoundary/Error";
 // import { BrowserRouter, Route, Routes } from "react-router";
 // import { Pagination } from "./components/Pagination";
-import Debouncing from "./components/Debouncing";
+// import Debouncing from "./components/Debouncing";
+// import Throttling from "./components/Throttling";
+// import { UseOptimistic } from "./components/UseOptimistic";
+import UseTransition from "./components/UseTransition";
 
 const App = () => {
   return (
@@ -35,7 +38,9 @@ const App = () => {
           <Route path="/page" element={<Pagination />} />
         </Routes>
       </BrowserRouter> */}
-      <Debouncing />
+      {/* <Debouncing /> */}
+      {/* <UseOptimistic /> */}
+      <UseTransition />
     </div>
   );
 };

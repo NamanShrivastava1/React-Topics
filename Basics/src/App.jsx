@@ -12,8 +12,9 @@
 // import Virtulization from "./components/Virtulization";
 // import BuggyComponent from "./components/BuggyComponent";
 // import Error from "./ErrorBoundary/Error";
-import { BrowserRouter, Route, Routes } from "react-router";
-import { Pagination } from "./components/Pagination";
+// import { BrowserRouter, Route, Routes } from "react-router";
+// import { Pagination } from "./components/Pagination";
+import Debouncing from "./components/Debouncing";
 
 const App = () => {
   return (
@@ -29,11 +30,12 @@ const App = () => {
       {/* <Error>
         <BuggyComponent />
       </Error> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/page" element={<Pagination />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <Debouncing />
     </div>
   );
 };

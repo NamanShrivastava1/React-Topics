@@ -4,10 +4,8 @@ import { useSearchParams } from "react-router";
 const ITEMS_PER_PAGE = 10;
 
 export function Pagination() {
-  // 1. Read query parameters from the URL
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // 2. Fallback to page 1 if the parameter is missing or invalid
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const [data, setData] = useState([]);

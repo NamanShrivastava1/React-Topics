@@ -40,7 +40,7 @@ const AdminDashboard = () => {
         <NameCard empData={{name: "Naman", exp: "2 Year"}} />
         </div>
         <div className="w-1/2 bg-blue-300 rounded-lg">..</div>
-      </div>
+     </div>
     </main>
   );
 };

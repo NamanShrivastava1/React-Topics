@@ -16,7 +16,6 @@
 // import { Pagination } from "./components/Pagination";
 // import Debouncing from "./components/Debouncing";
 // import Throttling from "./components/Throttling";
-// import { UseOptimistic } from "./components/UseOptimistic";
 import UseTransition from "./components/UseTransition";
 
 const App = () => {
@@ -39,7 +38,6 @@ const App = () => {
         </Routes>
       </BrowserRouter> */}
       {/* <Debouncing /> */}
-      {/* <UseOptimistic /> */}
       <UseTransition />
     </div>
   );

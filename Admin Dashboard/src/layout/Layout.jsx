@@ -5,7 +5,7 @@ import SideBar from "../shared/components/SideBar";
 
 const Layout = () => {
   return (
-    <div className="flex"> 
+    <div className="w-full h-screen bg-gray-100 flex gap-5 justify-between px-10">
       <SideBar />
       <Outlet />
     </div>

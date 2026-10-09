@@ -5,7 +5,7 @@ import SideBar from "../shared/components/SideBar";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="flex"> 
       <SideBar />
       <Outlet />
     </div>

@@ -78,6 +78,16 @@ const Register = () => {
           placeholder="Enter Password"
         />
 
+        <div>
+          <input
+            type="checkbox"
+            // checked={isChecked}
+            onChange={handleChange}
+            className="h-4 w-4 mr-3"
+          />
+          <span className="text-white text-lg">Register as Admin.</span>
+        </div>
+
         <button className="text-white bg-amber-700 px-9 py-3 rounded-lg mt-4 hover:bg-amber-600">
           Register
         </button>

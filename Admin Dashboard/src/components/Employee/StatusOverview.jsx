@@ -9,7 +9,7 @@ const StatusOverview = () => {
 
   return (
     <div>
-      <div className="absolute right-16 top-25 mx-auto flex h-58 w-58 items-center justify-center rounded-full">
+      <div className="absolute right-16 top-29 mx-auto flex h-58 w-58 items-center justify-center rounded-full">
         <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
           {progress.map((value, index) => {
             const segmentLength = (value / 100) * circumference;

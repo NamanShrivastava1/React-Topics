@@ -56,21 +56,44 @@ const EmployeeDashboard = () => {
         <div className="w-1/2 h-full flex flex-col items-center justify-between gap-2 rounded-lg overflow-hidden">
           <div className="w-full h-[45%] bg-[#58534D] rounded-lg py-4 px-6">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight mb-8 text-white">
+              <h1 className="text-2xl font-bold tracking-tight mb-2 text-white">
                 Employees's Progress
               </h1>
+              <hr className="text-white mb-8" />
               <ProgressBar
-                data={{ performanceType: "Ledearship", width: "60%", backgroundColor: "#4ade80" }}
+                data={{
+                  performanceType: "Ledearship",
+                  width: "60%",
+                  backgroundColor: "#4ade80",
+                }}
               />
-              <ProgressBar data={{ performanceType: "Skills", width: "70%", backgroundColor: "#3b82f6" }} />
               <ProgressBar
-                data={{ performanceType: "Communication", width: "80%", backgroundColor: "#c084fc" }}
+                data={{
+                  performanceType: "Skills",
+                  width: "70%",
+                  backgroundColor: "#3b82f6",
+                }}
+              />
+              <ProgressBar
+                data={{
+                  performanceType: "Communication",
+                  width: "80%",
+                  backgroundColor: "#c084fc",
+                }}
               />
             </div>
             <StatusOverview />
           </div>
-          <div className="w-full h-[55%] bg-amber-700 rounded-lg">
-            Performance
+          <div className="w-full h-[55%] bg-stone-600 text-white text-xl font-bold px-6 pt-4 rounded-lg overflow-y-auto">
+            <h1 className="text-2xl font-bold tracking-tight mb-2 text-white">
+              Performance
+            </h1>
+            <hr className="mb-6" />
+            <img
+              className="object-cover h-full w-full"
+              src="https://r-graph-gallery.com/img/graph/354-highlight-specific-elements-in-line-chart-2.png"
+              alt=""
+            />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 // import React from 'react'
 
+import { Link } from "react-router";
 import Box from "../../components/Admin/Box";
 import NameCard from "../../components/Admin/NameCard";
 
@@ -15,9 +16,12 @@ const AdminDashboard = () => {
         </div>
 
         <div className="flex gap-3 h-10 w-105">
-          <button className="bg-stone-600 text-white px-2 py-2 rounded-lg">
+          <Link
+            to="/addEmployee"
+            className="bg-stone-600 text-white px-2 py-2 rounded-lg"
+          >
             Add Employee
-          </button>
+          </Link>
 
           <input
             className="border border-stone-400 outline-none rounded-lg placeholder:text-black px-2"

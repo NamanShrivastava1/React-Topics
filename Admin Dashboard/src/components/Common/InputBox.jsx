@@ -1,9 +1,16 @@
 // import React from 'react'
 
-const InputBox = ({ type, name, value, onChange, placeholder,  }) => {
+const InputBox = ({
+  type,
+  name,
+  value,
+  onChange,
+  placeholder,
+  className="bg-stone-500 text-white px-30 py-3 rounded-lg outline-none focus:border focus:border-stone-400 transition placeholder:text-stone-200",
+}) => {
   return (
     <input
-      className="text-white bg-[#8682FF] px-30 py-3 rounded-lg outline-none focus:border focus:border-[#4C37D0] transition placeholder:text-white"
+      className={className}
       name={name}
       type={type}
       value={value || ""}

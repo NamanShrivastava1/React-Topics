@@ -15,13 +15,13 @@ const Login = () => {
     setUser((prev) => ({ ...prev, [name]: value }));
   };
   return (
-    <main className="w-1/2 h-full bg-gray-200 flex flex-col items-center pt-30 py-14 px-6">
-      <h1 className="text-[#5C42FF] font-extrabold text-4xl">
+    <main className="w-1/2 h-full bg-stone-600 flex flex-col items-center pt-30 py-14 px-6">
+      <h1 className="text-white font-extrabold text-4xl">
         Welcome to <br /> Employee Management System
       </h1>
-      <p className="text-md absolute top-[27%] right-[27%]">
+      <p className="text-md absolute top-[27%] right-[27%] text-white">
         Don't Have an Account?{" "}
-        <Link className="text-[#5C42FF]" to="/register">
+        <Link className="text-amber-300" to="/register">
           Register
         </Link>
       </p>
@@ -42,7 +42,7 @@ const Login = () => {
           placeholder="Enter Password"
         />
 
-        <button className="text-white bg-[#4C37D0] px-9 py-3 rounded-lg mt-4 hover:bg-[#5C42FF]">
+        <button className="text-white bg-amber-700 px-9 py-3 rounded-lg mt-4 hover:bg-amber-600">
           Login
         </button>
       </form>

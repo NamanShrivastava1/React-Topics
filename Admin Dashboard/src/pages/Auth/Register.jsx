@@ -1,13 +1,16 @@
 // import React from 'react'
-import { useState } from "react";
+
 import { Link } from "react-router";
 import InputBox from "../../components/Common/InputBox";
+import { useState } from "react";
 
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
+    contact: "",
     password: "",
+    company: "",
     role: "",
   });
 
@@ -16,23 +19,55 @@ const Register = () => {
     setUser((prev) => ({ ...prev, [name]: value }));
   };
   return (
-    <main className="w-1/2 h-[98%] bg-gray-200 flex flex-col items-center pt-30 py-14 px-6 mt-2 rounded-lg">
-      <h1 className="text-[#5C42FF] font-extrabold text-4xl">
+    <main className="w-1/2 h-full bg-stone-600 flex flex-col items-center pt-30 py-14 px-6">
+      <h1 className="text-white font-extrabold text-4xl">
         Welcome to <br /> Employee Management System
       </h1>
-      <p className="text-md absolute top-[27%] right-[28.5%]">
-        Don't Have an Account?{" "}
-        <Link className="text-[#5C42FF]" to="/register">
-          Register
+      <p className="text-md absolute top-[27%] right-[27%] text-white">
+        Already Have an Account?{" "}
+        <Link className="text-amber-300" to="/login">
+          Login
         </Link>
       </p>
-      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[16.5%]">
+      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[15%]">
+        <InputBox
+          type="text"
+          name="username"
+          value={user.username}
+          onChange={handleChange}
+          placeholder="Enter Username"
+        />
+
         <InputBox
           type="email"
           name="email"
           value={user.email}
           onChange={handleChange}
           placeholder="Enter Email"
+        />
+
+        <InputBox
+          type="tel"
+          name="contact"
+          value={user.contact}
+          onChange={handleChange}
+          placeholder="Enter Contact"
+        />
+
+        <InputBox
+          type="text"
+          name="Company"
+          value={user.company}
+          onChange={handleChange}
+          placeholder="Enter Company"
+        />
+
+        <InputBox
+          type="text"
+          name="role"
+          value={user.role}
+          onChange={handleChange}
+          placeholder="Enter Role"
         />
 
         <InputBox
@@ -43,8 +78,8 @@ const Register = () => {
           placeholder="Enter Password"
         />
 
-        <button className="text-white bg-[#4C37D0] px-9 py-3 rounded-lg mt-4 hover:bg-[#5C42FF]">
-          Login
+        <button className="text-white bg-amber-700 px-9 py-3 rounded-lg mt-4 hover:bg-amber-600">
+          Register
         </button>
       </form>
     </main>

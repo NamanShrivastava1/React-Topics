@@ -5,7 +5,7 @@ import EmployeeDashboard from "../pages/Employee/EmployeeDashboard";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
 import Login from "../pages/Auth/Login.jsx";
 import Register from "../pages/Auth/Register.jsx";
-import Home from "../shared/pages/Home.jsx";
+import Home from "../pages/common/Home.jsx";
 
 export const routes = createBrowserRouter([
   {

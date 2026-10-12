@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const SideBar = () => {
   return (
-    <main className="w-76 h-[98%] bg-gray-200 flex flex-col items-center justify-between py-14 px-6 mt-2 rounded-lg shadow-2xl">
+    <main className="w-76 h-[98%] bg-stone-300 flex flex-col items-center justify-between py-14 px-6 mt-2 rounded-lg shadow-2xl">
       <div className="flex flex-col items-center">
         <img
           className="h-20 w-20 rounded-full object-cover bg-[#61C688]"
@@ -12,7 +12,7 @@ const SideBar = () => {
           alt="EM"
         />
         <h1 className="text-center mt-6 font-bold">
-          Welcome to <br /> Admin Dashboard
+          Welcome to <br /> Employee Management
         </h1>
         <div className="flex flex-col gap-4 mt-10">
           <Button btnName="Home" />
@@ -20,7 +20,7 @@ const SideBar = () => {
           <Button btnName="Setting" />
         </div>
       </div>
-      <Button btnName="Logout"/>
+      <Button btnName="Logout" />
     </main>
   );
 };

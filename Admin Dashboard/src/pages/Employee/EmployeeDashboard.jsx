@@ -1,11 +1,13 @@
 // import React from 'react'
 
 import DetailsCard from "../../components/Employee/DetailsCard";
+import ProgressBar from "../../components/Employee/ProgressBar";
+import StatusOverview from "../../components/Employee/StatusOverview";
 
 const EmployeeDashboard = () => {
   return (
     <main className="w-full h-screen">
-      <div className="bg-stone-300 w-full h-full flex gap-2 justify-between px-8 py-10 rounded-lg shadow-2xl">
+      <div className="bg-stone-300 w-full h-full flex gap-2 justify-between px-8 py-10">
         <div className="employeeDiv w-1/2 h-full overflow-y-auto rounded-lg bg-stone-600 p-6 text-slate-800 shadow-lg">
           <div className="mb-6 flex items-center gap-4">
             <div className="flex size-14 items-center justify-center rounded-full bg-indigo-100 text-lg font-bold text-indigo-700">
@@ -24,7 +26,7 @@ const EmployeeDashboard = () => {
               data={{ firstValue: "Role", secondValue: "Engineering" }}
             />
             <DetailsCard
-              data={{ firstValue: "Company", secondValue: "Acme Technologies" }}
+              data={{ firstValue: "Company", secondValue: "BF Technologies" }}
             />
             <DetailsCard
               data={{ firstValue: "Employee ID", secondValue: "EMP-2048" }}
@@ -51,7 +53,26 @@ const EmployeeDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-full bg-stone-100 rounded-lg">.</div>
+        <div className="w-1/2 h-full flex flex-col items-center justify-between gap-2 rounded-lg overflow-hidden">
+          <div className="w-full h-[45%] bg-[#58534D] rounded-lg py-4 px-6">
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight mb-8 text-white">
+                Employees's Progress
+              </h1>
+              <ProgressBar
+                data={{ performanceType: "Ledearship", width: "60%", backgroundColor: "#4ade80" }}
+              />
+              <ProgressBar data={{ performanceType: "Skills", width: "70%", backgroundColor: "#3b82f6" }} />
+              <ProgressBar
+                data={{ performanceType: "Communication", width: "80%", backgroundColor: "#c084fc" }}
+              />
+            </div>
+            <StatusOverview />
+          </div>
+          <div className="w-full h-[55%] bg-amber-700 rounded-lg">
+            Performance
+          </div>
+        </div>
       </div>
     </main>
   );

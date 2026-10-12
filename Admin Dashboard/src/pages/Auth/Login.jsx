@@ -15,17 +15,17 @@ const Login = () => {
     setUser((prev) => ({ ...prev, [name]: value }));
   };
   return (
-    <main className="w-1/2 h-[98%] bg-gray-200 flex flex-col items-center pt-30 py-14 px-6 mt-2 rounded-lg">
+    <main className="w-1/2 h-full bg-gray-200 flex flex-col items-center pt-30 py-14 px-6">
       <h1 className="text-[#5C42FF] font-extrabold text-4xl">
         Welcome to <br /> Employee Management System
       </h1>
-      <p className="text-md absolute top-[27%] right-[28.5%]">
+      <p className="text-md absolute top-[27%] right-[27%]">
         Don't Have an Account?{" "}
         <Link className="text-[#5C42FF]" to="/register">
           Register
         </Link>
       </p>
-      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[16.5%]">
+      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[15%]">
         <InputBox
           type="email"
           name="email"

@@ -6,7 +6,7 @@ import NameCard from "../../components/Admin/NameCard";
 const AdminDashboard = () => {
   return (
     <main className="w-full h-screen">
-      <div className="bg-stone-300 w-full h-48 flex justify-between px-10 py-14 rounded-lg mt-2 shadow-2xl">
+      <div className="bg-stone-300 w-full h-48 flex justify-between px-10 py-14 rounded-lg shadow-2xl">
         <div className="">
           <h1 className="font-extrabold text-3xl">Welcome AdminName</h1>
           <p className="font-light text-lg">

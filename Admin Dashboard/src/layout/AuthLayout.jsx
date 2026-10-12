@@ -5,7 +5,7 @@ import AuthSideBar from "../components/Common/AuthSideBar";
 
 const AuthLayout = () => {
   return (
-    <div className="w-full h-screen bg-gray-100 flex justify-between px-10">
+    <div className="w-full h-screen bg-gray-100 flex justify-between">
       <AuthSideBar />
       <Outlet />
     </div>

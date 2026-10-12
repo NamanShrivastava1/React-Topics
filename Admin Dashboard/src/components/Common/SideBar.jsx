@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const SideBar = () => {
   return (
-    <main className="w-76 h-[98%] bg-stone-300 flex flex-col items-center justify-between py-14 px-6 mt-2 rounded-lg shadow-2xl">
+    <main className="w-76 h-full bg-stone-300 flex flex-col items-center justify-between py-14 px-6rounded-lg shadow-2xl">
       <div className="flex flex-col items-center">
         <img
           className="h-20 w-20 rounded-full object-cover bg-white"

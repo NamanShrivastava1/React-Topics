@@ -22,14 +22,9 @@ const AddEmployee = () => {
     experience: "",
   });
 
-  const handleInputChange = (event) => {
-    const { name } = event.target;
-    const value =
-      name === "phone" ? event.target.value.slice(0, 10) : event.target.value;
-    setEmployee((currentEmployee) => ({
-      ...currentEmployee,
-      [name]: value,
-    }));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEmployee((prev) => ({ ...prev, [name]: value }));
   };
 
   const labelStyle = "mb-2 block text-sm font-semibold text-white";

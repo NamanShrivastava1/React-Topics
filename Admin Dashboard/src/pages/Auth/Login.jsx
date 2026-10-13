@@ -2,10 +2,13 @@
 
 import { Link, useNavigate } from "react-router";
 import InputBox from "../../components/Common/InputBox";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../context/Context";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { users } = useContext(AppContext);
 
   const [error, setError] = useState("");
   const [errorField, setErrorField] = useState("");
@@ -43,15 +46,24 @@ const Login = () => {
       return;
     }
 
-    setUser(user);
-    console.log(user);
-
-    navigate("/dashboard/employee");
+    if (user.email === users.email && user.password === users.password) {
+      setError("");
+      if (users.isAdmin === false) {
+        navigate("/");
+      } else if (users.isAdmin === true) {
+        navigate("/dashboard/admin");
+      }
+    } else {
+      setError("Invalid Credentials");
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
+
+    setError("");
+    setErrorField("");
   };
   return (
     <main className="w-1/2 h-full bg-stone-600 flex flex-col items-center pt-30 py-14 px-6">
@@ -88,6 +100,7 @@ const Login = () => {
 
         {errorField === "password" && <p className="text-red-500">{error}</p>}
 
+        {<p className="text-red-500">{error}</p>}
         <button className="text-white bg-amber-700 px-9 py-3 rounded-lg mt-4 hover:bg-amber-600">
           Login
         </button>

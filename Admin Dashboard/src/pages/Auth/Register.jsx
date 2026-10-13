@@ -2,10 +2,13 @@
 
 import { Link, useNavigate } from "react-router";
 import InputBox from "../../components/Common/InputBox";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../context/Context.jsx";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const { setUsers } = useContext(AppContext);
 
   const [error, setError] = useState("");
   const [errorField, setErrorField] = useState("");
@@ -15,7 +18,7 @@ const Register = () => {
     contact: "",
     password: "",
     company: "",
-    role: "",
+    isAdmin: false,
   });
 
   const handleSubmit = (e) => {
@@ -59,12 +62,6 @@ const Register = () => {
       return;
     }
 
-    if (user.role.trim() === "") {
-      setError("Role is required");
-      setErrorField("role");
-      return;
-    }
-
     if (user.password.trim() === "") {
       setError("Password is required");
       setErrorField("password");
@@ -77,15 +74,17 @@ const Register = () => {
       return;
     }
 
-    setUser(user);
     console.log(user);
-
+    setUsers(user);
     navigate("/login");
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
 
     setError("");
     setErrorField("");
@@ -146,16 +145,6 @@ const Register = () => {
         {errorField === "company" && <p className="text-red-500">{error}</p>}
 
         <InputBox
-          type="text"
-          name="role"
-          value={user.role}
-          onChange={handleChange}
-          placeholder="Enter Role"
-        />
-
-        {errorField === "role" && <p className="text-red-500">{error}</p>}
-
-        <InputBox
           type="password"
           name="password"
           value={user.password}
@@ -168,7 +157,8 @@ const Register = () => {
         <div>
           <input
             type="checkbox"
-            // checked={isChecked}
+            name="isAdmin"
+            checked={user.isAdmin}
             onChange={handleChange}
             className="h-4 w-4 mr-3"
           />

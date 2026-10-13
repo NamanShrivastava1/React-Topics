@@ -7,6 +7,7 @@ import Login from "../pages/Auth/Login.jsx";
 import Register from "../pages/Auth/Register.jsx";
 import Home from "../pages/common/Home.jsx";
 import AddEmployee from "../pages/common/AddEmployee.jsx";
+import Protected from "../pages/common/Protected.jsx";
 
 export const routes = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/dashboard/admin",
-        element: <AdminDashboard />,
+        element: (
+          <Protected>
+            <AdminDashboard />,
+          </Protected>
+        ),
       },
     ],
   },

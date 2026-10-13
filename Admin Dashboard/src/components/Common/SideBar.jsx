@@ -1,5 +1,6 @@
 // import React from 'react'
 
+import { Link } from "react-router";
 import Button from "./Button";
 
 const SideBar = () => {
@@ -24,7 +25,12 @@ const SideBar = () => {
           <Button btnName="Setting" />
         </div>
       </div>
-      <Button btnName="Logout" />
+      <Link
+        to="/login"
+        className="bg-red-700 text-white py-2 px-4 rounded hover:bg-red-600"
+      >
+        Logout
+      </Link>
     </main>
   );
 };

@@ -174,7 +174,23 @@ function secondMax(arr) {
   console.log(secondMax);
 }
 
+function findSecondMax(arr) {
+  let max = 0;
+  let secondMax = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      secondMax = max;
+      max = arr[i];
+    } else if (arr[i] > secondMax && arr[i] !== max) {
+      secondMax = arr[i];
+    }
+  }
+  console.log(secondMax);
+}
+
 // secondMax(arr);
+// findSecondMax(arr);
 
 // Q19
 var arr = [1, 2, 4, 5, 6];
@@ -206,4 +222,4 @@ function removeDuplicates(arr) {
   return k + 1;
 }
 
-console.log(removeDuplicates(arr));
+// console.log(removeDuplicates(arr));

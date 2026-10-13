@@ -135,7 +135,22 @@ function fizzBuzz(n) {
 // fizzBuzz(15);
 
 // Q9
-var arr = [-5, -1, -9];
+// var arr = [-5, -1, -9];
+
+// function max(arr) {
+//   var max = arr[0];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] > max) {
+//       max = arr[i];
+//     }
+//   }
+//   console.log(max);
+// }
+
+// max(arr);
+
+// Second Max
+var arr = [4, 7, 2, 9, 8, 1];
 
 function max(arr) {
   var max = arr[0];
@@ -144,7 +159,51 @@ function max(arr) {
       max = arr[i];
     }
   }
-  console.log(max);
+  return max;
 }
 
-max(arr);
+function secondMax(arr) {
+  var maximum = max(arr);
+  var secondMax = arr[0];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > secondMax && arr[i] !== maximum) {
+      secondMax = arr[i];
+    }
+  }
+  console.log(secondMax);
+}
+
+// secondMax(arr);
+
+// Q19
+var arr = [1, 2, 4, 5, 6];
+
+function findMissing(arr) {
+  var n = arr.length + 1;
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  console.log(sum);
+  var tsum = (n * (n + 1)) / 2;
+  console.log(tsum - sum);
+}
+
+// findMissing(arr);
+
+var arr = [1, 3, 3, 7, 1, 9];
+
+function removeDuplicates(arr) {
+  var k = 0;
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[k] != arr[i]) {
+      arr[++k] = arr[i];
+    } else {
+      continue;
+    }
+  }
+  return k + 1;
+}
+
+console.log(removeDuplicates(arr));

@@ -1,10 +1,14 @@
 // import React from 'react'
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import InputBox from "../../components/Common/InputBox";
 import { useState } from "react";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const [error, setError] = useState("");
+  const [errorField, setErrorField] = useState("");
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -14,22 +18,93 @@ const Register = () => {
     role: "",
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (user.username.trim() === "") {
+      setError("Username is required");
+      setErrorField("username");
+      return;
+    }
+
+    if (user.email.trim() === "") {
+      setError("Email is required");
+      setErrorField("email");
+      return;
+    }
+
+    if (!emailRegex.test(user.email)) {
+      setError("Enter a valid email address");
+      setErrorField("email");
+      return;
+    }
+
+    if (user.contact.trim() === "") {
+      setError("Contact is required");
+      setErrorField("contact");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(user.contact)) {
+      setError("Contact must be 10 digits");
+      setErrorField("contact");
+      return;
+    }
+
+    if (user.company.trim() === "") {
+      setError("Company is required");
+      setErrorField("company");
+      return;
+    }
+
+    if (user.role.trim() === "") {
+      setError("Role is required");
+      setErrorField("role");
+      return;
+    }
+
+    if (user.password.trim() === "") {
+      setError("Password is required");
+      setErrorField("password");
+      return;
+    }
+
+    if (user.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      setErrorField("password");
+      return;
+    }
+
+    setUser(user);
+    console.log(user);
+
+    navigate("/login");
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
+
+    setError("");
+    setErrorField("");
   };
   return (
-    <main className="w-1/2 h-full bg-stone-600 flex flex-col items-center pt-30 py-14 px-6">
+    <main className="w-1/2 h-full bg-stone-600 flex flex-col items-center pt-25 py-14 px-6">
       <h1 className="text-white font-extrabold text-4xl">
         Welcome to <br /> Employee Management System
       </h1>
-      <p className="text-md absolute top-[27%] right-[27%] text-white">
+      <p className="text-md absolute top-[23%] right-[27.5%] text-white">
         Already Have an Account?{" "}
         <Link className="text-amber-300" to="/login">
           Login
         </Link>
       </p>
-      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[15%]">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 mt-13 absolute top-[27%] right-[15%]"
+      >
         <InputBox
           type="text"
           name="username"
@@ -37,6 +112,8 @@ const Register = () => {
           onChange={handleChange}
           placeholder="Enter Username"
         />
+
+        {errorField === "username" && <p className="text-red-500">{error}</p>}
 
         <InputBox
           type="email"
@@ -46,6 +123,8 @@ const Register = () => {
           placeholder="Enter Email"
         />
 
+        {errorField === "email" && <p className="text-red-500">{error}</p>}
+
         <InputBox
           type="tel"
           name="contact"
@@ -54,13 +133,17 @@ const Register = () => {
           placeholder="Enter Contact"
         />
 
+        {errorField === "contact" && <p className="text-red-500">{error}</p>}
+
         <InputBox
           type="text"
-          name="Company"
+          name="company"
           value={user.company}
           onChange={handleChange}
           placeholder="Enter Company"
         />
+
+        {errorField === "company" && <p className="text-red-500">{error}</p>}
 
         <InputBox
           type="text"
@@ -70,6 +153,8 @@ const Register = () => {
           placeholder="Enter Role"
         />
 
+        {errorField === "role" && <p className="text-red-500">{error}</p>}
+
         <InputBox
           type="password"
           name="password"
@@ -77,6 +162,8 @@ const Register = () => {
           onChange={handleChange}
           placeholder="Enter Password"
         />
+
+        {errorField === "password" && <p className="text-red-500">{error}</p>}
 
         <div>
           <input

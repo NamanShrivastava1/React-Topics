@@ -15,6 +15,10 @@ const SideBar = () => {
           Welcome to <br /> Employee Management
         </h1>
         <div className="flex flex-col gap-4 mt-10">
+          <div>
+            <label htmlFor="checkbox">Change Theme</label>
+            <input type="checkbox" name="checkbox" />
+          </div>
           <Button btnName="Home" />
           <Button btnName="Calender" />
           <Button btnName="Setting" />

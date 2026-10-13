@@ -45,4 +45,8 @@ export const routes = createBrowserRouter([
     path: "/addEmployee",
     element: <AddEmployee />,
   },
+  {
+    path: "*",
+    element: <h1>404. Page Not Found!</h1>,
+  },
 ]);

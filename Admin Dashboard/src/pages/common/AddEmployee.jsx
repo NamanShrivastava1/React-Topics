@@ -10,17 +10,79 @@ import {
   CalendarDays,
 } from "lucide-react";
 import InputBox from "../../components/Common/InputBox";
+import { useNavigate } from "react-router";
 
 const AddEmployee = () => {
+  const navigate = useNavigate();
+
+  const [error, setError] = useState("");
+  const [errorField, setErrorField] = useState("");
   const [employee, setEmployee] = useState({
     name: "",
     email: "",
-    phone: "",
+    contact: "",
     joiningDate: "",
     designation: "",
     salary: "",
     experience: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (employee.name.trim() === "") {
+      setError("Username is required");
+      setErrorField("name");
+      return;
+    }
+    if (employee.email.trim() === "") {
+      setError("Email is required");
+      setErrorField("email");
+      return;
+    }
+    if (!emailRegex.test(employee.email)) {
+      setError("Enter a valid email address");
+      setErrorField("email");
+      return;
+    }
+    if (employee.contact.trim() === "") {
+      setError("Contact is required");
+      setErrorField("contact");
+      return;
+    }
+    if (!/^\d{10}$/.test(employee.contact)) {
+      setError("Contact must be 10 digits");
+      setErrorField("contact");
+      return;
+    }
+    if (employee.joiningDate.trim() === "") {
+      setError("joiningDate is required");
+      setErrorField("joiningDate");
+      return;
+    }
+    if (employee.designation.trim() === "") {
+      setError("designation is required");
+      setErrorField("designation");
+      return;
+    }
+    if (employee.salary.trim() === "") {
+      setError("salary is required");
+      setErrorField("salary");
+      return;
+    }
+    if (employee.experience.trim() === "") {
+      setError("experience is required");
+      setErrorField("experience");
+      return;
+    }
+
+    setEmployee(employee);
+    console.log(employee);
+
+    navigate("/dashboard/admin");
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +96,10 @@ const AddEmployee = () => {
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center gap-4"></div>
 
-        <form className="rounded-2xl border border-stone-500 bg-stone-600 p-5 shadow-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-2xl border border-stone-500 bg-stone-600 p-5 shadow-lg"
+        >
           <div className="mb-7 border-b border-stone-500 pb-5">
             <h2 className="text-lg font-bold text-white">
               Employee Information
@@ -60,6 +125,9 @@ const AddEmployee = () => {
                   onChange={handleInputChange}
                   placeholder="Enter full name"
                 />
+                {errorField === "name" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
 
               <div>
@@ -77,6 +145,9 @@ const AddEmployee = () => {
                     placeholder="employee@example.com"
                   />
                 </div>
+                {errorField === "email" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
 
               <div>
@@ -88,12 +159,16 @@ const AddEmployee = () => {
                   />
                   <InputBox
                     type="tel"
-                    name="phone"
-                    value={employee.phone}
+                    name="contact"
+                    value={employee.contact}
                     onChange={handleInputChange}
                     placeholder="Enter phone number"
                   />
                 </div>
+
+                {errorField === "contact" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
 
               <div>
@@ -111,6 +186,10 @@ const AddEmployee = () => {
                     className="w-105 bg-stone-500 text-white px-30 py-3 rounded-lg outline-none focus:border focus:border-stone-400 transition placeholder:text-stone-200"
                   />
                 </div>
+
+                {errorField === "joiningDate" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
             </div>
           </div>
@@ -154,6 +233,9 @@ const AddEmployee = () => {
                   onChange={handleInputChange}
                   placeholder="e.g. Software Developer"
                 />
+                {errorField === "designation" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
 
               <div>
@@ -171,6 +253,10 @@ const AddEmployee = () => {
                     placeholder="Enter monthly salary"
                   />
                 </div>
+
+                {errorField === "salary" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
 
               <div>
@@ -182,6 +268,9 @@ const AddEmployee = () => {
                   onChange={handleInputChange}
                   placeholder="e.g. 2"
                 />
+                {errorField === "experience" && (
+                  <p className="text-red-500">{error}</p>
+                )}
               </div>
             </div>
           </div>

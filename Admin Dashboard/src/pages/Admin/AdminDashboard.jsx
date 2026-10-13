@@ -3,6 +3,7 @@
 import { Link } from "react-router";
 import Box from "../../components/Admin/Box";
 import NameCard from "../../components/Admin/NameCard";
+import { employeeData } from "../../../employeeData.js";
 
 const AdminDashboard = () => {
   return (
@@ -42,17 +43,14 @@ const AdminDashboard = () => {
         <div className="empDiv w-1/2 text-black  bg-stone-300 px-4 py-2 rounded-lg overflow-y-auto">
           <h1 className="mb-3 text-2xl font-medium">Employees</h1>
           <hr className="mb-6" />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
-          <NameCard empData={{ name: "Naman", exp: "2 Year" }} />
+          {employeeData.map((emp) => {
+            return (
+              <NameCard
+                key={emp.employeeId}
+                empData={{ name: emp.firstName, exp: emp.employeeId }}
+              />
+            );
+          })}
         </div>
         <div className="w-1/2 bg-stone-200 rounded-lg overflow-hidden">
           <img

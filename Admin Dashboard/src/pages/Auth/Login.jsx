@@ -1,14 +1,53 @@
 // import React from 'react'
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import InputBox from "../../components/Common/InputBox";
 import { useState } from "react";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [error, setError] = useState("");
+  const [errorField, setErrorField] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (user.email.trim() === "") {
+      setError("Email is required");
+      setErrorField("email");
+      return;
+    }
+
+    if (!emailRegex.test(user.email)) {
+      setError("Enter a valid email address");
+      setErrorField("email");
+      return;
+    }
+
+    if (user.password.trim() === "") {
+      setError("Password is required");
+      setErrorField("password");
+      return;
+    }
+
+    if (user.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      setErrorField("password");
+      return;
+    }
+
+    setUser(user);
+    console.log(user);
+
+    navigate("/dashboard/employee");
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +64,10 @@ const Login = () => {
           Register
         </Link>
       </p>
-      <form className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[15%]">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 mt-20 absolute top-[27%] right-[15%]"
+      >
         <InputBox
           type="email"
           name="email"
@@ -34,6 +76,8 @@ const Login = () => {
           placeholder="Enter Email"
         />
 
+        {errorField === "email" && <p className="text-red-500">{error}</p>}
+
         <InputBox
           type="password"
           name="password"
@@ -41,6 +85,8 @@ const Login = () => {
           onChange={handleChange}
           placeholder="Enter Password"
         />
+
+        {errorField === "password" && <p className="text-red-500">{error}</p>}
 
         <button className="text-white bg-amber-700 px-9 py-3 rounded-lg mt-4 hover:bg-amber-600">
           Login

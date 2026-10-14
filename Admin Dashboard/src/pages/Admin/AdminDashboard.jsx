@@ -11,12 +11,25 @@ const AdminDashboard = () => {
   const [search, setSearch] = useState("");
   const [filteredEmployees, setFilteredEmployees] = useState(employeeData);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const currentItems = filteredEmployees.slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
+
+  const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
+
   function handleSearch() {
     const filtered = employeeData.filter((emp) =>
       emp.firstName.toLowerCase().includes(search.toLowerCase()),
     );
     setFilteredEmployees(filtered);
-    console.log(filtered);
+    // console.log(filtered);
   }
 
   return (
@@ -62,8 +75,8 @@ const AdminDashboard = () => {
           <div>
             <h1 className="mb-3 text-2xl font-medium">Employees</h1>
             <hr className="mb-6" />
-            {filteredEmployees.length > 0 ? (
-              filteredEmployees.map((emp) => (
+            {currentItems.length > 0 ? (
+              currentItems.map((emp) => (
                 <NameCard
                   key={emp.employeeId}
                   empData={{
@@ -77,11 +90,19 @@ const AdminDashboard = () => {
             )}
           </div>
           <div className="w-150 h-10 bg-stone-300 text-stone-600 flex items-center justify-center gap-6 rounded-lg absolute bottom-3.5 left-65">
-            <ArrowBigLeft />
+            <ArrowBigLeft
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            />
             <p>
-              {} of {}
+              {currentPage} of {totalPages}
             </p>
-            <ArrowBigRight />
+            <ArrowBigRight
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            />
           </div>
         </div>
         <div className="w-1/2 bg-stone-200 rounded-lg overflow-hidden">

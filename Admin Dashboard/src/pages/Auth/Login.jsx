@@ -49,9 +49,9 @@ const Login = () => {
     if (user.email === users.email && user.password === users.password) {
       setError("");
       if (users.isAdmin === false) {
-        navigate("/dashboard/employee");
+        navigate("/employee/dashboard");
       } else if (users.isAdmin === true) {
-        navigate("/dashboard/admin");
+        navigate("/admin/dashboard");
       }
     } else {
       setError("Invalid Credentials");

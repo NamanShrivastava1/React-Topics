@@ -20,7 +20,13 @@ const SideBar = () => {
             <label htmlFor="checkbox">Change Theme</label>
             <input type="checkbox" name="checkbox" />
           </div>
-          <Button btnName="Home" />
+
+          <Link
+            to="/"
+            className="bg-stone-600 text-white px-14 py-2 rounded-lg hover:cursor-pointer hover:bg-stone-500"
+          >
+            Home
+          </Link>
           <Button btnName="Calender" />
           <Button btnName="Setting" />
         </div>

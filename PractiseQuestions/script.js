@@ -192,6 +192,103 @@ function findSecondMax(arr) {
 // secondMax(arr);
 // findSecondMax(arr);
 
+// Q10
+// With Inbuilt Method
+// function isPalindrome (str) {
+//   var newStr = str.toLowerCase().replaceAll(" ", "");
+//   return newStr === newStr.split('').reverse().join('');
+// }
+
+// Without Inbuilt Methods
+function isPalindrome(str) {
+  var newStr = str.toLowerCase().replaceAll(" ", "");
+
+  var i = 0;
+  var j = newStr.length - 1;
+
+  while (i < j) {
+    if (newStr[i] !== newStr[j]) {
+      return false;
+    }
+    i++;
+    j--;
+  }
+  return true;
+}
+
+// console.log(isPalindrome("hello"));
+// console.log(isPalindrome("never odd or even"));
+
+// Q11
+function multiplicationTable(n) {
+  for (var i = 1; i <= 10; i++) {
+    console.log(n * i);
+  }
+}
+
+// multiplicationTable(3)
+
+// Q12
+function countWords(str) {
+  var trimmedStr = str.trim();
+
+  var count = 0;
+  for (var i = 0; i < trimmedStr.length; i++) {
+    if (trimmedStr[i] === " " && trimmedStr[i + 1] === " ") {
+      continue;
+    }
+    if (trimmedStr[i] === " ") {
+      count++;
+    }
+  }
+  console.log(count + 1);
+}
+
+// countWords("I love       JavaScript");
+
+// Q13
+function removeDuplicates(arr) {}
+
+// Q15
+function isAnagram(str1, str2) {
+  var newStr1 = str1.toLowerCase();
+  var newStr2 = str2.toLowerCase();
+  if (newStr1.length !== newStr2.length) return false;
+  else {
+    var count = new Array(26).fill(0);
+    // we can use .charCodeAt() it gives ascii value
+    for (var i = 0; i < newStr1.length; i++) {
+      count[newStr1[i] - "a"]++;
+    }
+    for (var i = 0; i < newStr2.length; i++) {
+      count[newStr2[i] - "a"]--;
+    }
+    for (var i = 0; i < count.length; i++) {
+      if (count[i] !== 0) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+console.log(isAnagram("Listen", "Silent"));
+
+// Q16
+function fibonacciSeries(n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+
+  var series = [0, 1];
+
+  for (var i = 2; i < n; i++) {
+    series[i] = series[i - 1] + series[i - 2];
+  }
+  return series;
+}
+
+// console.log(fibonacciSeries(8));
+
 // Q19
 var arr = [1, 2, 4, 5, 6];
 
@@ -207,19 +304,3 @@ function findMissing(arr) {
 }
 
 // findMissing(arr);
-
-var arr = [1, 3, 3, 7, 1, 9];
-
-function removeDuplicates(arr) {
-  var k = 0;
-  for (var i = 1; i < arr.length; i++) {
-    if (arr[k] != arr[i]) {
-      arr[++k] = arr[i];
-    } else {
-      continue;
-    }
-  }
-  return k + 1;
-}
-
-// console.log(removeDuplicates(arr));

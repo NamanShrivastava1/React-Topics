@@ -1,38 +1,60 @@
 // import React from 'react'
 
+import { useContext } from "react";
 import DetailsCard from "../../components/Employee/DetailsCard";
 import ProgressBar from "../../components/Employee/ProgressBar";
 import StatusOverview from "../../components/Employee/StatusOverview";
+import { AppContext } from "../../context/Context";
 
 const EmployeeDashboard = () => {
+  const { users } = useContext(AppContext);
+
+  const employeeId = `EMP-${Math.floor(Math.random() * 9000)
+    .toString()
+    .padStart(4, "0")}`;
+
+  const salary = `$${Math.floor(Math.random() * 10000).toLocaleString()}`;
+
   return (
     <main className="w-full h-screen">
       <div className="bg-stone-300 w-full h-full flex gap-2 justify-between px-8 py-10">
         <div className="employeeDiv w-1/2 h-full overflow-y-auto rounded-lg bg-stone-600 p-6 text-slate-800 shadow-lg">
           <div className="mb-6 flex items-center gap-4">
             <div className="flex size-14 items-center justify-center rounded-full bg-indigo-100 text-lg font-bold text-indigo-700">
-              NS
+              {users.username ? users.username.charAt(0).toUpperCase() : "E"}
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">
-                Naman Shrivastava
+                {users.username || "Employee Name"}
               </h1>
-              <p className="text-sm text-white">Senior Software Engineer</p>
+              <p className="text-sm text-white">{users.role || "Employee"}</p>
             </div>
           </div>
 
           <div className="mb-6 grid grid-cols-2 gap-4">
             <DetailsCard
-              data={{ firstValue: "Role", secondValue: "Engineering" }}
+              data={{
+                firstValue: "Role",
+                secondValue: users.role || "Employee",
+              }}
             />
             <DetailsCard
-              data={{ firstValue: "Company", secondValue: "BF Technologies" }}
+              data={{
+                firstValue: "Company",
+                secondValue: users.company || "Company Name",
+              }}
             />
             <DetailsCard
-              data={{ firstValue: "Employee ID", secondValue: "EMP-2048" }}
+              data={{
+                firstValue: "Employee ID",
+                secondValue: employeeId || "EMP-0000",
+              }}
             />
             <DetailsCard
-              data={{ firstValue: "Monthly salary", secondValue: "$8,500" }}
+              data={{
+                firstValue: "Monthly salary",
+                secondValue: salary || "Salary",
+              }}
             />
           </div>
 

@@ -18,6 +18,7 @@ const Register = () => {
     contact: "",
     password: "",
     company: "",
+    role: "",
     isAdmin: false,
   });
 
@@ -59,6 +60,12 @@ const Register = () => {
     if (user.company.trim() === "") {
       setError("Company is required");
       setErrorField("company");
+      return;
+    }
+
+    if (user.role.trim() === "") {
+      setError("Role is required");
+      setErrorField("role");
       return;
     }
 
@@ -143,6 +150,16 @@ const Register = () => {
         />
 
         {errorField === "company" && <p className="text-red-500">{error}</p>}
+
+        <InputBox
+          type="text"
+          name="role"
+          value={user.role}
+          onChange={handleChange}
+          placeholder="Enter Role"
+        />
+
+        {errorField === "role" && <p className="text-red-500">{error}</p>}
 
         <InputBox
           type="password"

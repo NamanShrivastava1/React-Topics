@@ -49,7 +49,7 @@ const Login = () => {
     if (user.email === users.email && user.password === users.password) {
       setError("");
       if (users.isAdmin === false) {
-        navigate("/");
+        navigate("/dashboard/employee");
       } else if (users.isAdmin === true) {
         navigate("/dashboard/admin");
       }

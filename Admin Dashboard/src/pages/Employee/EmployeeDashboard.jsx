@@ -13,7 +13,7 @@ const EmployeeDashboard = () => {
     .toString()
     .padStart(4, "0")}`;
 
-  const salary = `$${Math.floor(Math.random() * 10000).toLocaleString()}`;
+  const salary = `₹${Math.floor(Math.random() * 10000).toLocaleString('en-IN')}`;
 
   return (
     <main className="w-full h-screen">

@@ -249,6 +249,23 @@ function countWords(str) {
 // Q13
 function removeDuplicates(arr) {}
 
+// Q14
+function CharFrequency(str) {
+  var obj = {};
+
+  for (const char of str) {
+    if (obj[char]) {
+      obj[char]++;
+    } else {
+      obj[char] = 1;
+    }
+  }
+
+  console.log(obj);
+}
+
+// CharFrequency("banana");
+
 // Q15
 function isAnagram(str1, str2) {
   var newStr1 = str1.toLowerCase();
@@ -256,12 +273,12 @@ function isAnagram(str1, str2) {
   if (newStr1.length !== newStr2.length) return false;
   else {
     var count = new Array(26).fill(0);
-    // we can use .charCodeAt() it gives ascii value
+    // .charCodeAt() it gives ascii value
     for (var i = 0; i < newStr1.length; i++) {
-      count[newStr1[i] - "a"]++;
+      count[newStr1.charCodeAt(i) - 97]++;
     }
     for (var i = 0; i < newStr2.length; i++) {
-      count[newStr2[i] - "a"]--;
+      count[newStr2.charCodeAt(i) - 97]--;
     }
     for (var i = 0; i < count.length; i++) {
       if (count[i] !== 0) {
@@ -272,7 +289,7 @@ function isAnagram(str1, str2) {
   return true;
 }
 
-console.log(isAnagram("Listen", "Silent"));
+// console.log(isAnagram("Listen", "Silent"));
 
 // Q16
 function fibonacciSeries(n) {
@@ -288,6 +305,19 @@ function fibonacciSeries(n) {
 }
 
 // console.log(fibonacciSeries(8));
+
+// Q18
+function capatilize(str) {
+  var strArr = str.split(" ");
+
+  for (var i = 0; i < strArr.length; i++) {
+    strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].slice(1);
+  }
+
+  console.log(strArr.join(" "));
+}
+
+capatilize("learn javascript every day");
 
 // Q19
 var arr = [1, 2, 4, 5, 6];

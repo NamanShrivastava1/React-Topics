@@ -9,11 +9,11 @@ import { BrowserRouter } from "react-router";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-    <ThemeProvider>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
-    </ThemeProvider>
+      <ThemeProvider>
+        <ContextProvider>
+          <App />
+        </ContextProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,
 );

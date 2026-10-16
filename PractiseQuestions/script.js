@@ -317,7 +317,7 @@ function capatilize(str) {
   console.log(strArr.join(" "));
 }
 
-capatilize("learn javascript every day");
+// capatilize("learn javascript every day");
 
 // Q19
 var arr = [1, 2, 4, 5, 6];
@@ -334,3 +334,52 @@ function findMissing(arr) {
 }
 
 // findMissing(arr);
+
+// Q20
+function chunkArray(arr, n) {
+  var resArr = [];
+  for (var i = 0; i < arr.length; i += n) {
+    resArr.push(arr.slice(i, i + n));
+  }
+  console.log(resArr);
+}
+
+chunkArray([1, 2, 3, 4, 5, 6, 7], 3);
+
+// Q21
+function reverse(arr, start, end) {
+  while (start < end) {
+    var temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+
+    start++;
+    end--;
+  }
+  return arr;
+}
+
+function rotateArray(arr, n) {
+  n = n % arr.length;
+
+  var a = reverse(arr, 0, arr.length - n - 1);
+  var b = reverse(arr, arr.length - n, arr.length - 1);
+  var ans = reverse(arr, 0, arr.length - 1);
+
+  console.log(ans);
+}
+
+// rotateArray([1, 2, 3, 4, 5], 2);
+
+// Q22
+function twoSum(arr, n) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === n) {
+        return [i, j];
+      }
+    }
+  }
+}
+
+// console.log(twoSum([3, 2, 4], 6));

@@ -344,7 +344,7 @@ function chunkArray(arr, n) {
   console.log(resArr);
 }
 
-chunkArray([1, 2, 3, 4, 5, 6, 7], 3);
+// chunkArray([1, 2, 3, 4, 5, 6, 7], 3);
 
 // Q21
 function reverse(arr, start, end) {
@@ -359,17 +359,32 @@ function reverse(arr, start, end) {
   return arr;
 }
 
-function rotateArray(arr, n) {
+// function rotateArrayRight(arr, n) {
+//   n = n % arr.length;
+
+//   var a = reverse(arr, 0, arr.length - n - 1);
+//   var b = reverse(arr, arr.length - n, arr.length - 1);
+//   var ans = reverse(arr, 0, arr.length - 1);
+
+//   console.log(ans);
+// }
+
+function rotateArrayLeft(arr, n) {
   n = n % arr.length;
 
-  var a = reverse(arr, 0, arr.length - n - 1);
-  var b = reverse(arr, arr.length - n, arr.length - 1);
+  var a = reverse(arr, 0, n - 1);
+  var b = reverse(arr, n, arr.length - 1);
   var ans = reverse(arr, 0, arr.length - 1);
 
   console.log(ans);
 }
 
-// rotateArray([1, 2, 3, 4, 5], 2);
+
+// const num = [1, 2, 3, 4, 5];
+// const res = rotateArrayRight(num, 3);
+rotateArrayLeft([1, 2, 3, 4, 5], 2)
+
+
 
 // Q22
 function twoSum(arr, n) {

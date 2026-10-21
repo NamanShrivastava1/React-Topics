@@ -379,11 +379,8 @@ function rotateArrayLeft(arr, n) {
   console.log(ans);
 }
 
-
 // rotateArrayRight([1, 2, 3, 4, 5], 3);
-rotateArrayLeft([1, 2, 3, 4, 5], 2)
-
-
+// rotateArrayLeft([1, 2, 3, 4, 5], 2);
 
 // Q22
 function twoSum(arr, n) {
@@ -397,3 +394,20 @@ function twoSum(arr, n) {
 }
 
 // console.log(twoSum([3, 2, 4], 6));
+
+// Q23
+function flattenArray(arr) {
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result = result.concat(flattenArray(arr[i]))
+    } else {
+      result.push(arr[i]);
+      console.log(result)
+    }
+  }
+  return result
+}
+
+console.log(flattenArray([1, [2, [3, [4, 5]]], 6]));

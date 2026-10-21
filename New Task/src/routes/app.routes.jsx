@@ -8,7 +8,7 @@ export const routes = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/form",
+    path: "/form/:id",
     element: <Form />
   }
 ]);

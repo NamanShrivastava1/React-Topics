@@ -380,8 +380,7 @@ function rotateArrayLeft(arr, n) {
 }
 
 
-// const num = [1, 2, 3, 4, 5];
-// const res = rotateArrayRight(num, 3);
+// rotateArrayRight([1, 2, 3, 4, 5], 3);
 rotateArrayLeft([1, 2, 3, 4, 5], 2)
 
 

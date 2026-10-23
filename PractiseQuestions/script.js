@@ -401,13 +401,43 @@ function flattenArray(arr) {
 
   for (var i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i])) {
-      result = result.concat(flattenArray(arr[i]))
+      result = result.concat(flattenArray(arr[i]));
     } else {
       result.push(arr[i]);
-      console.log(result)
+      console.log(result);
     }
   }
-  return result
+  return result;
 }
 
-console.log(flattenArray([1, [2, [3, [4, 5]]], 6]));
+// console.log(flattenArray([1, [2, [3, [4, 5]]], 6]));
+
+// Move Zeros to End
+function moveZerosToEnd(arr) {
+  var j = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      arr[j++] = arr[i];
+    }
+  }
+  while (j < arr.length) {
+    arr[j++] = 0;
+  }
+  console.log(arr);
+}
+// moveZerosToEnd([0, 0, 1, 0, 0, 3]);
+
+// Find All Pairs Whose Sum Equals a Target
+function sumEqualsTarget(arr, target) {
+  var result = [];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] == target) {
+        result.push([arr[i], arr[j]]);
+      }
+    }
+  }
+  console.log(result);
+}
+
+sumEqualsTarget([2, 7, 11, 15, 3, 6, 4, 5], 9);

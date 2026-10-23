@@ -429,9 +429,9 @@ function moveZerosToEnd(arr) {
 
 // Find All Pairs Whose Sum Equals a Target
 function sumEqualsTarget(arr, target) {
-  var result = [];
-  for (var i = 0; i < arr.length; i++) {
-    for (var j = i + 1; j < arr.length; j++) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] + arr[j] == target) {
         result.push([arr[i], arr[j]]);
       }
@@ -440,4 +440,20 @@ function sumEqualsTarget(arr, target) {
   console.log(result);
 }
 
+// Optimized
+// function sumEqualsTarget(arr, target) {
+//   var seen = new Set();
+//   var result = [];
+
+//   for (var i = 0; i < arr.length; i++) {
+//     const comp = target - arr[i];
+
+//     if (seen.has(comp)) {
+//       result.push([comp, arr[i]]);
+//     }
+//     seen.add(arr[i]);
+//   }
+//   console.log(result);
+//   return result;
+// }
 sumEqualsTarget([2, 7, 11, 15, 3, 6, 4, 5], 9);

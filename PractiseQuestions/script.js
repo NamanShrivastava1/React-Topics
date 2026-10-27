@@ -478,4 +478,34 @@ function reverseArrValues(arr) {
   console.log(newArr);
 }
 
-reverseArrValues(values);
+// reverseArrValues(values);
+
+const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+
+function maximumSubArray(nums) {
+  let currentMax = nums[0];
+  let globalMax = nums[0];
+
+  for (let i = 0; i < nums.length; i++) {
+    currentMax = Math.max(nums[i], currentMax + nums[i]);
+    globalMax = Math.max(globalMax, currentMax);
+  }
+  console.log(globalMax);
+}
+
+// maximumSubArray(nums);
+
+// Frequency Count
+function freqCount(arr) {
+  let freq = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (freq[arr[i]]) {
+      freq[arr[i]] += 1;
+    } else {
+      freq[arr[i]] = 1;
+    }
+  }
+  console.log(freq);
+}
+
+freqCount([1, 1, 2, 3, 3, 4]);

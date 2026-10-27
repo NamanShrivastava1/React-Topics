@@ -456,4 +456,26 @@ function sumEqualsTarget(arr, target) {
 //   console.log(result);
 //   return result;
 // }
-sumEqualsTarget([2, 7, 11, 15, 3, 6, 4, 5], 9);
+// sumEqualsTarget([2, 7, 11, 15, 3, 6, 4, 5], 9);
+
+let values = ["name", "game", "hello"];
+
+function reverse(str) {
+  let newStr = "";
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+  return newStr;
+}
+
+function reverseArrValues(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let revVal = reverse(arr[i]);
+    newArr.push(revVal);
+  }
+  console.log(newArr);
+}
+
+reverseArrValues(values);

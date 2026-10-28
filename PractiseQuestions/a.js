@@ -64,4 +64,18 @@ function firstNonRepeatingChar(arr) {
   return null;
 }
 
-console.log(firstNonRepeatingChar('GeeksForGeeks'));
+// console.log(firstNonRepeatingChar('GeeksForGeeks'));
+
+let num = 453;
+
+function sumDigits(num) {
+  let sum = 0;
+  while (num > 0) {
+    let lastDigit = num % 10;
+    sum += lastDigit;
+    num = Math.floor(num / 10);
+  }
+  return sum;
+}
+
+// console.log(sumDigits(num));

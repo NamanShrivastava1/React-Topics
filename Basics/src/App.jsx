@@ -16,29 +16,30 @@
 // import { Pagination } from "./components/Pagination";
 // import Debouncing from "./components/Debouncing";
 // import Throttling from "./components/Throttling";
-import UseTransition from "./components/UseTransition";
+// import UseTransition from "./components/UseTransition";
 
 const App = () => {
   return (
     <div>
-      {/* <Todo /> */}
-      {/* <UseRef /> */}
-      {/* <ReactMemo /> */}
-      {/* <SyntheticEvents /> */}
-      {/* <UseMemo /> */}
-      {/* <UseCallback /> */}
-      {/* <LazyLoding /> */}
-      {/* <Virtulization /> */}
+      // {/* <Todo /> */}
+      // {/* <UseRef /> */}
+      // {/* <ReactMemo /> */}
+      // {/* <SyntheticEvents /> */}
+      // {/* <UseMemo /> */}
+      // {/* <UseCallback /> */}
+      // {/* <LazyLoding /> */}
+      // {/* <Virtulization /> */}
+      //{" "}
       {/* <Error>
-        <BuggyComponent />
-      </Error> */}
+//       <BuggyComponent />
+//     </Error> */}
       {/* <BrowserRouter>
-        <Routes>
-          <Route path="/page" element={<Pagination />} />
-        </Routes>
-      </BrowserRouter> */}
-      {/* <Debouncing /> */}
-      <UseTransition />
+//       <Routes>
+//         <Route path="/page" element={<Pagination />} />
+//       </Routes>
+//     </BrowserRouter> */}
+      // {/* <Debouncing /> */}
+      // {/* <UseTransition /> */}
     </div>
   );
 };
